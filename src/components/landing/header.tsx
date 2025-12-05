@@ -52,7 +52,7 @@ export default function Header() {
         </nav>
         <div className="hidden md:flex">
            <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
-                <a href="#contact">Book a Consultation</a>
+                <a href="#contact">Fale Conosco</a>
             </Button>
         </div>
         <div className="md:hidden">
@@ -75,7 +75,7 @@ export default function Header() {
                     </Link>
                 ))}
                  <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
-                    <a href="#contact">Book a Consultation</a>
+                    <a href="#contact">Fale Conosco</a>
                 </Button>
               </div>
             </SheetContent>
