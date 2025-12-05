@@ -7,7 +7,7 @@ const aboutImage = PlaceHolderImages.find(img => img.id === 'about-1');
 
 export default function About() {
   return (
-    <section id="about" className="bg-background relative overflow-hidden">
+    <section id="about" className="bg-secondary relative overflow-hidden">
        <div
         aria-hidden="true"
         className="absolute inset-y-0 right-0 w-1/4 -skew-x-12 transform translate-x-1/2 bg-accent/50"
@@ -16,7 +16,7 @@ export default function About() {
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
           <div className="space-y-4 text-center md:text-left">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
-              The Story Behind Projeto Frederico
+              Quem somos?
             </h2>
             <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Projeto Frederico was born from a deep love for dogs and a passion for understanding their behavior. Our mission is to foster a stronger bond between dogs and their owners through positive reinforcement and compassionate training methods. We believe every dog deserves a happy and well-behaved life.
