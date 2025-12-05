@@ -97,6 +97,48 @@
       "imageHint": "dog playing"
     },
     {
+      "id": "testimonial-5",
+      "description": "Woman giving her dog a treat for learning a new trick",
+      "imageUrl": "https://images.unsplash.com/photo-1610441675279-ce564c76b976?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkb2clMjB0cmFpbmluZ3xlbnwwfHx8fDE3NjQ4NTQ4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog training"
+    },
+    {
+      "id": "testimonial-6",
+      "description": "A business owner petting a dog in his pet-friendly store",
+      "imageUrl": "https://images.unsplash.com/photo-1549496826-5b59a60e34a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXQlMjBmcmllbmRseSUyMHN0b3JlfGVufDB8fHx8MTc2NDg1NDg4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pet-friendly store"
+    },
+    {
+      "id": "testimonial-7",
+      "description": "A woman crying tears of joy while hugging her found dog",
+      "imageUrl": "https://images.unsplash.com/photo-1548681528-6a5c45b66b42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2clMjByZXVuaW9ufGVufDB8fHx8MTc2NDg1NDg4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog reunion"
+    },
+    {
+      "id": "testimonial-8",
+      "description": "A veterinarian checking a rescued puppy",
+      "imageUrl": "https://images.unsplash.com/photo-1583337130417-2346040878b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2ZXQlMjBwZXRfX2NhcmV8ZW58MHx8fHwxNzY0ODU0ODgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pet care"
+    },
+    {
+      "id": "testimonial-9",
+      "description": "A person making an online donation on their laptop",
+      "imageUrl": "https://images.unsplash.com/photo-1584515933487-779824d29309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbmxpbmUlMjBkb25hdGlvbnxlbnwwfHx8fDE3NjQ4NTQ4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "online donation"
+    },
+    {
+      "id": "testimonial-10",
+      "description": "An elderly woman smiling and sitting with her small dog on a park bench",
+      "imageUrl": "https://images.unsplash.com/photo-1549923746-916a9a4c841c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwd29tYW4lMjB3aXRoJTIwZG9nfGVufDB8fHx8MTc2NDg1NDg4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "elderly woman dog"
+    },
+    {
+      "id": "testimonial-11",
+      "description": "A clean and friendly neighborhood street with a happy dog walking",
+      "imageUrl": "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRvZyUyMHdhbGtpbmdfX2NvbW11bml0eXxlbnwwfHx8fDE3NjQ4NTQ4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy dog"
+    },
+    {
       "id": "social-1",
       "description": "Woman smiling with her dog.",
       "imageUrl": "https://i.imgur.com/63wcYLB.jpeg",
