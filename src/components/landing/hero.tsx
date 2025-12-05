@@ -36,6 +36,9 @@ export default function Hero() {
                 <CardDescription className="text-lg md:text-xl text-white/80 pt-2">
                     Cuidar é um ato de amor
                 </CardDescription>
+                <p className="text-sm text-white/70 max-w-md pt-2">
+                    Nossa missão é transformar a vida de animais de rua em Arujá através de resgate, cuidado e advocacy, promovendo uma comunidade mais consciente e solidária.
+                </p>
             </CardHeader>
             <CardContent>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
