@@ -10,7 +10,7 @@ const conclusionImage2 = PlaceHolderImages.find(img => img.id === 'conclusion-2'
 
 export default function Conclusion() {
   return (
-    <section id="conclusion" className="bg-primary w-full py-20 md:py-28 lg:py-36 text-primary-foreground relative overflow-hidden">
+    <section id="conclusion" className="bg-gradient-to-br from-primary to-green-950 w-full py-20 md:py-28 lg:py-36 text-primary-foreground relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
