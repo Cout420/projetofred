@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Heart } from 'lucide-react';
 
@@ -31,20 +31,26 @@ export default function HowWeWork() {
               </CardContent>
             </Card>
           </div>
-          <div className="space-y-4 text-center md:text-left">
-            <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
-              Como atuamos?
-            </h2>
-            <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Nossa atuação é pautada na transparência e no amor. Cada resgate, cada campanha de castração e cada doação de alimento é realizada com o máximo de cuidado e responsabilidade, buscando sempre o melhor para os animais e para a comunidade.
-            </p>
-            <div className="flex justify-center md:justify-start">
-              <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105">
-                <a href="#contact">
-                  <Heart className="mr-2 h-4 w-4" /> Doe agora
-                </a>
-              </Button>
-            </div>
+          <div className="flex justify-center">
+            <Card className="w-full max-w-xl bg-card/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+                <CardHeader className="p-0 mb-4 text-center md:text-left">
+                    <CardTitle className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
+                        Como atuamos?
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                    <CardDescription className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center md:text-left">
+                        Nossa atuação é pautada na transparência e no amor. Cada resgate, cada campanha de castração e cada doação de alimento é realizada com o máximo de cuidado e responsabilidade, buscando sempre o melhor para os animais e para a comunidade.
+                    </CardDescription>
+                    <div className="flex justify-center md:justify-start mt-6">
+                        <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105">
+                            <a href="#contact">
+                            <Heart className="mr-2 h-4 w-4" /> Doe agora
+                            </a>
+                        </Button>
+                    </div>
+                </CardContent>
+            </Card>
           </div>
         </div>
       </div>
