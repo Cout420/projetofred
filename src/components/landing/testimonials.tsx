@@ -11,29 +11,29 @@ import { cn } from '@/lib/utils';
 const testimonials = [
   {
     id: 'testimonial-1',
-    name: 'Maria & Bento',
-    text: "Projeto Frederico transformed our chaotic puppy into a well-behaved member of the family. The positive reinforcement techniques worked wonders. We couldn't be happier!",
+    name: 'Juliana & Max',
+    text: "O trabalho do Projeto Frederico é simplesmente incrível. Eles nos ajudaram a encontrar o Max, um vira-lata que hoje é a alegria da casa. Um alívio saber que temos gente assim aqui em Arujá.",
     rating: 5,
     imageId: 'testimonial-1',
   },
   {
     id: 'testimonial-2',
-    name: 'João & Luna',
-    text: "The behavioral consultation was a game-changer for our anxious rescue, Luna. The trainers were so patient and knowledgeable. Luna is now a much more confident and happy dog.",
+    name: 'Carlos & Belinha',
+    text: "Minha cachorrinha Belinha foi resgatada e cuidada por eles. A dedicação e o amor que eles têm pelos animais é algo raro de se ver. Sou muito grato por todo o suporte que nos deram.",
     rating: 5,
     imageId: 'testimonial-2',
   },
   {
     id: 'testimonial-3',
-    name: 'Ana & Thor',
-    text: "We enrolled Thor in the advanced obedience class, and the results are incredible. His recall is flawless, and our walks are so much more enjoyable. Highly recommend!",
+    name: 'Fernanda & Zeca',
+    text: "Apoio o projeto com doações mensais e vejo de perto a diferença que fazem na vida de tantos animais aqui na nossa cidade. É um trabalho sério e muito necessário. Recomendo a todos que ajudem!",
     rating: 5,
     imageId: 'testimonial-3',
   },
     {
     id: 'testimonial-4',
-    name: 'Pedro & Pipoca',
-    text: "The puppy foundation course was the best decision we made for Pipoca. It provided the perfect start for her training and socialization. The trainers are amazing!",
+    name: 'Ricardo & Teca',
+    text: "Graças à orientação do Projeto Frederico, conseguimos castrar a Teca e outros cães da nossa rua. O impacto positivo na comunidade é notável. Eles são verdadeiros anjos da guarda dos animais.",
     rating: 5,
     imageId: 'testimonial-4',
   },
@@ -60,9 +60,9 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Words From Our Pack</h2>
+            <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Depoimentos de quem apoia</h2>
             <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              See what fellow dog lovers are saying about their experience with Projeto Frederico.
+              Veja o que os amantes de animais estão dizendo sobre a experiência com o Projeto Frederico.
             </p>
           </div>
         </div>
