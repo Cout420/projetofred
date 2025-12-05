@@ -1,28 +1,38 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { PawPrintIcon } from '../icons/paw-print';
-import { Eye, Heart, Sparkles } from 'lucide-react';
+import { Eye, Heart, Sparkles, Check } from 'lucide-react';
 
 const services = [
   {
     icon: PawPrintIcon,
     title: 'Missão',
     description: 'Promover bem-estar e proteção animal por meio de resgates responsáveis, orientações educativas, doação de ração e incentivo a castração, garantindo dignidade aos animais e contribuindo para uma cidade mais humana, consciente e solidária.',
+    isList: false,
   },
   {
     icon: Eye,
     title: 'Visão',
     description: 'Ser referência regional em políticas de cuidado, prevenção e proteção animal, tornando-se um modelo sustentável de parceria entre sociedade civil, poder público, empresas e protetores independentes, reduzindo abandono, fome e sofrimento animal.',
+    isList: false,
   },
   {
     icon: Heart,
-    title: 'Behavioral Consultation',
-    description: 'Tackle specific behavioral issues like anxiety, aggression, or fear with a personalized one-on-one plan.',
+    title: 'Valores',
+    description: [
+        'Respeito à vida',
+        'Compromisso animal',
+        'Solidariedade',
+        'Bem-estar animal',
+        'Responsabilidade compartilhada'
+    ],
+    isList: true,
   },
   {
     icon: Sparkles,
     title: 'Canine Good Citizen',
     description: 'Prepare your dog for the AKC Canine Good Citizen test, a certification of their good manners at home and in the community.',
+    isList: false,
   },
 ];
 
@@ -31,7 +41,7 @@ export default function Services() {
     <section id="services" className="bg-secondary relative overflow-hidden">
        <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-accent/50"
+        className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-accent/20"
       />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -52,7 +62,18 @@ export default function Services() {
                 <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-1 flex-col justify-between">
-                <CardDescription>{service.description}</CardDescription>
+                {service.isList && Array.isArray(service.description) ? (
+                  <div className="text-left space-y-2">
+                    {service.description.map((item, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <Check className="h-5 w-5 text-green-500" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <CardDescription>{service.description}</CardDescription>
+                )}
                 <Button variant="link" asChild className="mt-4">
                   <a href="#contact">Learn More</a>
                 </Button>
