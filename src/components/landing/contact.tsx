@@ -33,8 +33,7 @@ export default function Contact() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     const projectPhoneNumber = '5511940344310';
     
-    const message = `
-*Nova Denúncia Recebida*
+    const message = `*Nova Denúncia Recebida*
 
 *Nome:* ${values.name}
 *Email:* ${values.email}
@@ -42,8 +41,7 @@ export default function Contact() {
 *Assunto:* ${values.subject}
 
 *Mensagem:*
-${values.message}
-    `.trim();
+${values.message}`;
 
     const whatsappUrl = `https://wa.me/${projectPhoneNumber}?text=${encodeURIComponent(message)}`;
     
