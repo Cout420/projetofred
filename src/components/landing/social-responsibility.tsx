@@ -20,7 +20,6 @@ const benefits = [
 ];
 
 const image1 = PlaceHolderImages.find(img => img.id === 'social-1');
-const image2 = PlaceHolderImages.find(img => img.id === 'social-2');
 
 export default function SocialResponsibility() {
   return (
@@ -55,36 +54,22 @@ export default function SocialResponsibility() {
           </div>
 
           {/* Right Column */}
-          <div className="space-y-8">
-             <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center md:text-left">
+          <div className="flex flex-col items-center justify-center space-y-8 text-center">
+             <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
                 <span className="whitespace-nowrap text-primary">Responsabilidade Social</span>
                 <span className="block text-accent whitespace-nowrap">com a Causa Animal</span>
              </h2>
-             <div className="relative h-[400px] flex flex-col justify-center items-center gap-4">
+             <div className="w-full max-w-lg">
                 {image1 && (
-                     <Card className="overflow-hidden rounded-3xl shadow-2xl w-[80%] -mb-20 z-10 transform -rotate-3 hover:rotate-0 hover:scale-105 transition-transform duration-300">
+                     <Card className="overflow-hidden rounded-3xl shadow-2xl w-full transition-transform duration-300 hover:scale-105">
                         <CardContent className="p-0">
                             <Image
                                 src={image1.imageUrl}
                                 alt={image1.description}
-                                width={500}
-                                height={300}
-                                className="object-cover"
-                                data-ai-hint={image1.imageHint}
-                            />
-                        </CardContent>
-                     </Card>
-                )}
-                 {image2 && (
-                     <Card className="overflow-hidden rounded-3xl shadow-2xl w-[90%] transform rotate-2 hover:rotate-0 hover:scale-105 transition-transform duration-300">
-                        <CardContent className="p-0">
-                            <Image
-                                src={image2.imageUrl}
-                                alt={image2.description}
                                 width={600}
                                 height={400}
-                                className="object-cover"
-                                data-ai-hint={image2.imageHint}
+                                className="object-cover w-full aspect-[3/2]"
+                                data-ai-hint={image1.imageHint}
                             />
                         </CardContent>
                      </Card>
