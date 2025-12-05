@@ -3,6 +3,7 @@ import Hero from '@/components/landing/hero';
 import About from '@/components/landing/about';
 import Services from '@/components/landing/services';
 import HowWeWork from '@/components/landing/how-we-work';
+import Partnership from '@/components/landing/partnership';
 import Gallery from '@/components/landing/gallery';
 import Testimonials from '@/components/landing/testimonials';
 import Contact from '@/components/landing/contact';
@@ -17,6 +18,7 @@ export default function Home() {
         <About />
         <Services />
         <HowWeWork />
+        <Partnership />
         <Gallery />
         <Testimonials />
         <Contact />
