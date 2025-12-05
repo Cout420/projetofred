@@ -19,6 +19,12 @@
       "imageHint": "volunteer dog"
     },
     {
+      "id": "how-we-work-bg",
+      "description": "A volunteer caring for a group of dogs",
+      "imageUrl": "https://i.imgur.com/uWLziUu.jpeg",
+      "imageHint": "volunteer dogs"
+    },
+    {
       "id": "gallery-1",
       "description": "A golden retriever smiling at the camera",
       "imageUrl": "https://images.unsplash.com/photo-1554830072-52d78d0d4c18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGFwcHklMjBkb2d8ZW58MHx8fHwxNzY0ODg5NTk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -81,13 +87,13 @@
     {
       "id": "testimonial-3",
       "description": "A woman and her dog enjoying a peaceful walk in the park",
-      "imageUrl": "https://images.unsplash.com/photo-1636998094055-ec16a40164f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkb2clMjB3YWxraW5nfGVufDB8fHx8MTc2NDg3NjU4NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1636998094055-ec16a40164f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkb2clMjB3YWxraW5nfGVufDB8fHx8fDE3NjQ4NzY1ODV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "dog walking"
     },
     {
       "id": "testimonial-4",
       "description": "A man playing fetch with his energetic puppy",
-      "imageUrl": "https://images.unsplash.com/photo-1620325698009-4163b8f6d501?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2clMjBwbGF5aW5nfGVufDB8fHx8MTc2NDg1NDg4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1620325698009-4163b8f6d501?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2clMjBwbGF5aW5nfGVufDB8fHx8fDE3NjQ4NTQ4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "dog playing"
     }
   ]
