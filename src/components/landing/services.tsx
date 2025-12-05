@@ -31,10 +31,8 @@ export default function Services() {
     <section id="services" className="bg-secondary relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-0"
-      >
-        <div className="absolute right-[-20rem] bottom-[-20rem] h-[50rem] w-[50rem] rounded-full bg-accent/10 blur-[12rem]" />
-      </div>
+        className="absolute inset-y-0 left-0 w-1/4 skew-y-12 transform -translate-x-1/2 bg-accent/10"
+      />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
