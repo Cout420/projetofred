@@ -52,7 +52,7 @@ export default function SocialResponsibility() {
 
           {/* Right Column */}
           <div className="space-y-8">
-             <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center md:text-left">
+             <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center md:text-left">
                 <span className="whitespace-nowrap">Responsabilidade Social</span>
                 <span className="block text-primary whitespace-nowrap">com a Causa Animal</span>
              </h2>
