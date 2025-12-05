@@ -52,13 +52,6 @@ const testimonials = [
     imageId: 'testimonial-9',
   },
   {
-    id: 'testimonial-10',
-    name: 'Clara Nunes',
-    text: 'Sou idosa e vivo sozinha com meu cãozinho, o Bilu. Às vezes, o dinheiro da aposentadoria mal dá para as contas. O Projeto Frederico me ajuda com a ração e isso me dá um alívio enorme. Eles cuidam de nós dois.',
-    rating: 5,
-    imageId: 'testimonial-10',
-  },
-  {
     id: 'testimonial-11',
     name: 'Marcos Rocha',
     text: 'A diferença no nosso bairro é visível. O número de animais abandonados diminuiu e os que ainda estão na rua são mais bem cuidados pela comunidade, graças à conscientização que o projeto promove. É uma transformação social.',

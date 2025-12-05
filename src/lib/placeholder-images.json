@@ -105,14 +105,8 @@
     {
       "id": "testimonial-9",
       "description": "A person making an online donation on their laptop",
-      "imageUrl": "https://images.unsplash.com/photo-1584515933487-779824d29309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbmxpbmUlMjBkb25hdGlvbnxlbnwwfHx8fDE3NjQ4NTQ4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1584515933487-779824d29309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbmxpbmUlMjBkb25hdGlvbnxlbnwwfHx8fDE3NjQ4NTQ4ODB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "online donation"
-    },
-    {
-      "id": "testimonial-10",
-      "description": "An elderly woman smiling and sitting with her small dog on a park bench",
-      "imageUrl": "https://images.unsplash.com/photo-1549923746-916a9a4c841c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwd29tYW4lMjB3aXRoJTIwZG9nfGVufDB8fHx8MTc2NDg1NDg4MHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "elderly woman dog"
     },
     {
       "id": "testimonial-11",
