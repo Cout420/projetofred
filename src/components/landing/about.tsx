@@ -10,7 +10,7 @@ export default function About() {
     <section id="about" className="bg-background relative overflow-hidden">
        <div
         aria-hidden="true"
-        className="absolute inset-y-0 right-0 w-1/4 -skew-x-12 transform translate-x-1/2 bg-accent/20"
+        className="absolute inset-y-0 right-0 w-1/4 -skew-x-12 transform translate-x-1/2 bg-accent/50"
       />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
