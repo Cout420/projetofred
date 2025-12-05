@@ -40,7 +40,7 @@ export default function HowWeWork() {
             </div>
 
             <div className="flex justify-center">
-                 <Card className="w-full max-w-md bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
+                 <Card className="w-full max-w-sm bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
                      <CardHeader className="p-0 mb-4">
                         <CardTitle className="font-headline text-2xl font-bold text-white">
                             As empresas podem apoiar de 3 formas:
