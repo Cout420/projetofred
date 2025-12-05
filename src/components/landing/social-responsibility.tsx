@@ -24,13 +24,17 @@ const image2 = PlaceHolderImages.find(img => img.id === 'social-2');
 
 export default function SocialResponsibility() {
   return (
-    <section id="social-responsibility" className="bg-accent w-full py-20 md:py-28 lg:py-36 text-accent-foreground">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="social-responsibility" className="bg-secondary relative w-full overflow-hidden py-20 md:py-28 lg:py-36 text-foreground">
+       <div
+        aria-hidden="true"
+        className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/80"
+      />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 items-center">
 
           {/* Left Column */}
           <div className="space-y-8">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-primary">
                 <PawPrintIcon className="h-8 w-8" />
                 <div>
                     <h3 className="font-headline text-2xl font-bold">Projeto Frederico</h3>
@@ -38,13 +42,13 @@ export default function SocialResponsibility() {
                 </div>
             </div>
 
-            <h4 className="font-headline text-xl font-semibold">Toda empresa parceira receberá:</h4>
+            <h4 className="font-headline text-xl font-semibold text-primary">Toda empresa parceira receberá:</h4>
 
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-4 p-4 rounded-full bg-primary/20 border border-primary/30 shadow-md">
-                   <ArrowRightCircle className="h-6 w-6 text-primary-foreground flex-shrink-0" />
-                   <p className="text-sm font-medium">{benefit.text}</p>
+                <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-background border border-border shadow-md">
+                   <ArrowRightCircle className="h-6 w-6 text-accent flex-shrink-0" />
+                   <p className="text-sm font-medium text-foreground">{benefit.text}</p>
                 </div>
               ))}
             </div>
@@ -53,8 +57,8 @@ export default function SocialResponsibility() {
           {/* Right Column */}
           <div className="space-y-8">
              <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center md:text-left">
-                <span className="whitespace-nowrap">Responsabilidade Social</span>
-                <span className="block text-primary whitespace-nowrap">com a Causa Animal</span>
+                <span className="whitespace-nowrap text-primary">Responsabilidade Social</span>
+                <span className="block text-accent whitespace-nowrap">com a Causa Animal</span>
              </h2>
              <div className="relative h-[400px] flex flex-col justify-center items-center gap-4">
                 {image1 && (
