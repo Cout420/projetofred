@@ -53,8 +53,8 @@ export default function SocialResponsibility() {
           {/* Right Column */}
           <div className="space-y-8">
              <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center md:text-left">
-                Responsabilidade Social <br/>
-                <span className="text-primary">com a Causa Animal</span>
+                Responsabilidade Social
+                <span className="block text-primary">com a Causa Animal</span>
              </h2>
              <div className="relative h-[400px] flex flex-col justify-center items-center gap-4">
                 {image1 && (
