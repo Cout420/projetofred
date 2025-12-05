@@ -23,7 +23,7 @@ export default function About() {
             </p>
             <div className="flex justify-center md:justify-start">
                 <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
-                    <a href="#contact">Meet the Team</a>
+                    <a href="https://www.instagram.com/chameofrederico/" target="_blank" rel="noopener noreferrer">Saiba mais</a>
                 </Button>
             </div>
           </div>
