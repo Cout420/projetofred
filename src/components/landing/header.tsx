@@ -51,7 +51,7 @@ export default function Header() {
         </nav>
         <div className="hidden md:flex">
            <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
-                <a href="#contact">Fale Conosco</a>
+                <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">Fale Conosco</a>
             </Button>
         </div>
         <div className="md:hidden">
@@ -74,7 +74,7 @@ export default function Header() {
                     </Link>
                 ))}
                  <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
-                    <a href="#contact">Fale Conosco</a>
+                    <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">Fale Conosco</a>
                 </Button>
               </div>
             </SheetContent>
