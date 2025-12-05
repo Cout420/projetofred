@@ -37,7 +37,7 @@ export default function Hero() {
                     Cuidar é um ato de amor
                 </CardDescription>
                 <p className="text-sm text-white/70 max-w-md pt-2">
-                    Nossa missão é transformar a vida de animais de rua em Arujá através de resgate, cuidado e advocacy, promovendo uma comunidade mais consciente e solidária.
+                    Promovemos o bem-estar e a proteção animal em Arujá com resgates, castração e apoio a famílias. Juntos, construímos uma comunidade mais solidária.
                 </p>
             </CardHeader>
             <CardContent>
