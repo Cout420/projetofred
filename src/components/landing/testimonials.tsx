@@ -33,23 +33,9 @@ const testimonials = [
     {
     id: 'testimonial-4',
     name: 'José Pereira',
-    text: "Minha cachorrinha foi resgatada pela equipe do Frederico, muito doente. Eles не só cuidaram dela, como me deram todo o suporte para a adoção. Hoje a Mel é a alegria da casa. Um trabalho que inspira respeito e gratidão.",
+    text: "Minha cachorrinha foi resgatada pela equipe do Frederico, muito doente. Eles não só cuidaram dela, como me deram todo o suporte para a adoção. Hoje a Mel é a alegria da casa. Um trabalho que inspira respeito e gratidão.",
     rating: 5,
     imageId: 'testimonial-4',
-  },
-  {
-    id: 'testimonial-5',
-    name: 'Ana Costa',
-    text: 'Além da ajuda prática, o projeto oferece orientação. Aprendi muito sobre posse responsável e como cuidar melhor da saúde dos meus pets. Esse trabalho educativo é fundamental e transforma a vida dos animais e dos donos.',
-    rating: 5,
-    imageId: 'testimonial-5',
-  },
-  {
-    id: 'testimonial-6',
-    name: 'Lucas Martins',
-    text: 'Como empresário, decidi apoiar o Projeto Frederico e foi a melhor decisão. Ver a transparência e o impacto real do meu apoio na comunidade de Arujá é gratificante. É uma parceria que vale a pena.',
-    rating: 5,
-    imageId: 'testimonial-6',
   },
   {
     id: 'testimonial-7',
@@ -57,13 +43,6 @@ const testimonials = [
     text: 'Meu cachorro fugiu e eu estava desesperada. A rede de apoio do Projeto Frederico foi essencial para encontrá-lo. A mobilização deles é impressionante. Serei eternamente grata por terem trazido meu amigo de volta.',
     rating: 5,
     imageId: 'testimonial-7',
-  },
-  {
-    id: 'testimonial-8',
-    name: 'Rafaela Souza',
-    text: 'Encontrei um cachorro muito assustado e machucado, não sabia o que fazer. O projeto agiu rápido, fez o resgate e deu todo o tratamento necessário. Hoje o "Trovão" está recuperado e em um lar temporário. Eles são heróis!',
-    rating: 5,
-    imageId: 'testimonial-8',
   },
   {
     id: 'testimonial-9',
