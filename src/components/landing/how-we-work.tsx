@@ -35,17 +35,17 @@ export default function HowWeWork() {
             <Card className="w-full max-w-xl bg-card/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
                 <CardHeader className="p-0 mb-4 text-center md:text-left">
                     <CardTitle className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
-                        Como atuamos?
+                        Como empresas podem ajudar essa INICIATIVA?
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
                     <CardDescription className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center md:text-left">
-                        Nossa atuação é pautada na transparência e no amor. Cada resgate, cada campanha de castração e cada doação de alimento é realizada com o máximo de cuidado e responsabilidade, buscando sempre o melhor para os animais e para a comunidade.
+                        O Projeto Frederico recebe doações de pessoas físicas e preferencialmente de pessoas jurídicas, com certificação oficial de parceria social e divulgação institucional.
                     </CardDescription>
                     <div className="flex justify-center md:justify-start mt-6">
                         <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105">
                             <a href="#contact">
-                            <Heart className="mr-2 h-4 w-4" /> Doe agora
+                            <Heart className="mr-2 h-4 w-4" /> As empresas podem apoiar de 3 formas
                             </a>
                         </Button>
                     </div>
