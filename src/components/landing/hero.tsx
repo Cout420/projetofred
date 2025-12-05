@@ -40,7 +40,7 @@ export default function Hero() {
                     <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105">
                         <a href="#services">Our Services</a>
                     </Button>
-                    <Button size="lg" variant="outline" asChild className="border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-transform duration-300 hover:scale-105">
+                    <Button size="lg" variant="outline" asChild className="border-accent bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
                         <a href="#contact">Book a Consultation</a>
                     </Button>
                 </div>

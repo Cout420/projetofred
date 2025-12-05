@@ -18,13 +18,13 @@ export default function About() {
               Projeto Frederico was born from a deep love for dogs and a passion for understanding their behavior. Our mission is to foster a stronger bond between dogs and their owners through positive reinforcement and compassionate training methods. We believe every dog deserves a happy and well-behaved life.
             </p>
             <div className="flex justify-center md:justify-start">
-                <Button size="lg" asChild className="transition-transform duration-300 hover:scale-105">
+                <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
                     <a href="#contact">Meet the Team</a>
                 </Button>
             </div>
           </div>
           <div className="flex justify-center">
-            <Card className="overflow-hidden rounded-xl shadow-2xl transition-transform duration-300 hover:scale-105 hover:shadow-primary/20">
+            <Card className="overflow-hidden rounded-xl shadow-2xl transition-transform duration-300 hover:scale-105 hover:shadow-accent/20">
               <CardContent className="p-0">
                 {aboutImage && (
                   <Image
