@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 @layer base {
@@ -20,7 +20,7 @@ body {
     --secondary-foreground: 170 26% 26%;
     --muted: 30 20% 90%;
     --muted-foreground: 20 9% 45%;
-    --accent: 39 98% 36%;
+    --accent: 35 98% 37%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -41,7 +41,7 @@ body {
     --card-foreground: 0 0% 98%;
     --popover: 170 10% 10%;
     --popover-foreground: 0 0% 98%;
-    --primary: 39 98% 36%;
+    --primary: 35 98% 37%;
     --primary-foreground: 0 0% 100%;
     --secondary: 170 15% 20%;
     --secondary-foreground: 0 0% 98%;
@@ -53,7 +53,7 @@ body {
     --destructive-foreground: 0 0% 98%;
     --border: 170 15% 20%;
     --input: 170 15% 20%;
-    --ring: 39 98% 36%;
+    --ring: 35 98% 37%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
