@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Send } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'O nome deve ter pelo menos 2 caracteres.' }),
@@ -19,6 +20,7 @@ const formSchema = z.object({
 });
 
 export default function Contact() {
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,6 +49,11 @@ ${values.message}`;
     
     window.open(whatsappUrl, '_blank');
     
+    toast({
+      title: 'Abrindo WhatsApp...',
+      description: 'Sua denúncia está pronta para ser enviada.',
+    });
+
     form.reset();
   }
 
