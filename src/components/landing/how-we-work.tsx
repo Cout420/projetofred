@@ -2,7 +2,9 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Check, WhatsApp as WhatsAppIcon } from 'lucide-react';
 import { Heart } from 'lucide-react';
+import Link from 'next/link';
 
 const howWeWorkImage = PlaceHolderImages.find(img => img.id === 'how-we-work-1');
 const howWeWorkBgImage = PlaceHolderImages.find(img => img.id === 'how-we-work-bg');
@@ -39,7 +41,7 @@ export default function HowWeWork() {
               </CardContent>
             </Card>
           </div>
-          <div className="flex justify-center">
+          <div className="flex flex-col items-center md:items-start gap-6">
             <Card className="w-full max-w-xl bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
                 <CardHeader className="p-0 mb-4 text-center md:text-left">
                     <CardTitle className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
@@ -50,15 +52,31 @@ export default function HowWeWork() {
                     <CardDescription className="max-w-[600px] text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center md:text-left">
                         O Projeto Frederico recebe doações de pessoas físicas e preferencialmente de pessoas jurídicas, com certificação oficial de parceria social e divulgação institucional.
                     </CardDescription>
-                    <div className="flex justify-center md:justify-start mt-6">
-                        <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105">
-                            <a href="#contact">
-                            <Heart className="mr-2 h-4 w-4" /> As empresas podem apoiar de 3 formas
+                </CardContent>
+            </Card>
+
+            <Card className="w-full max-w-md bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
+                 <CardHeader className="p-0 mb-4">
+                    <CardTitle className="font-headline text-2xl font-bold text-white">
+                        As empresas podem apoiar de 3 formas:
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                    <ul className="space-y-3 text-white/90">
+                        <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Ração</li>
+                        <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Castração</li>
+                        <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Apoio logístico</li>
+                    </ul>
+                    <div className="mt-6 flex justify-start">
+                        <Button variant="link" asChild className="text-accent hover:text-accent/80 p-0 h-auto">
+                             <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20como%20minha%20empresa%20pode%20apoiar%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">
+                                Fale conosco via WhatsApp
                             </a>
                         </Button>
                     </div>
                 </CardContent>
             </Card>
+
           </div>
         </div>
       </div>

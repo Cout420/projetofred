@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { PawPrintIcon } from '../icons/paw-print';
 import { Eye, Heart, Sparkles, Check } from 'lucide-react';
+import Link from 'next/link';
 
 const services = [
   {
@@ -46,7 +47,7 @@ export default function Services() {
     <section id="services" className="bg-background relative overflow-hidden">
        <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-orange-500/80"
+        className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/10"
       />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -66,7 +67,7 @@ export default function Services() {
                 </div>
                 <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-1 flex-col justify-between p-4">
+              <CardContent className="flex flex-1 flex-col justify-between p-4 pt-0">
                 {service.isList && Array.isArray(service.description) ? (
                   <div className="text-left space-y-2 text-sm text-muted-foreground">
                     {service.description.map((item, i) => (
@@ -79,9 +80,11 @@ export default function Services() {
                 ) : (
                   <CardDescription>{service.description}</CardDescription>
                 )}
-                <Button variant="link" asChild className="mt-4 text-accent">
-                  <a href="#contact">Fale Conosco</a>
-                </Button>
+                 <div className="mt-4">
+                    <Button variant="link" asChild className="text-accent">
+                        <Link href="#contact">Fale Conosco</Link>
+                    </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
