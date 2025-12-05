@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { PawPrintIcon } from '../icons/paw-print';
-import { Award, Heart, Sparkles } from 'lucide-react';
+import { Eye, Heart, Sparkles } from 'lucide-react';
 
 const services = [
   {
@@ -10,9 +10,9 @@ const services = [
     description: 'Promover bem-estar e proteção animal por meio de resgates responsáveis, orientações educativas, doação de ração e incentivo a castração, garantindo dignidade aos animais e contribuindo para uma cidade mais humana, consciente e solidária.',
   },
   {
-    icon: Award,
-    title: 'Advanced Obedience',
-    description: 'For graduates of our basic course, this program perfects off-leash commands and complex skills.',
+    icon: Eye,
+    title: 'Visão',
+    description: 'Ser referência regional em políticas de cuidado, prevenção e proteção animal, tornando-se um modelo sustentável de parceria entre sociedade civil, poder público, empresas e protetores independentes, reduzindo abandono, fome e sofrimento animal.',
   },
   {
     icon: Heart,
@@ -29,9 +29,9 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="bg-secondary relative overflow-hidden">
-      <div
+       <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-1/4 skew-y-12 transform -translate-x-1/2 bg-accent/50"
+        className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-accent/50"
       />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
