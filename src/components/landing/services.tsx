@@ -6,8 +6,8 @@ import { Award, Heart, Sparkles } from 'lucide-react';
 const services = [
   {
     icon: PawPrintIcon,
-    title: 'Puppy Foundation',
-    description: 'Start your puppy off on the right paw with essential socialization, basic obedience, and house training.',
+    title: 'Missão',
+    description: 'Promover bem-estar e proteção animal por meio de resgates responsáveis, orientações educativas, doação de ração e incentivo a castração, garantindo dignidade aos animais e contribuindo para uma cidade mais humana, consciente e solidária.',
   },
   {
     icon: Award,
@@ -31,7 +31,7 @@ export default function Services() {
     <section id="services" className="bg-secondary relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-1/4 skew-y-12 transform -translate-x-1/2 bg-accent/40"
+        className="absolute inset-y-0 left-0 w-1/4 skew-y-12 transform -translate-x-1/2 bg-accent/50"
       />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
