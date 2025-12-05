@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Check } from 'lucide-react';
 
-const howWeWorkImage = PlaceHolderImages.find(img => img.id === 'how-we-work-1');
 const howWeWorkBgImage = PlaceHolderImages.find(img => img.id === 'how-we-work-bg');
 
 export default function HowWeWork() {
@@ -25,59 +24,44 @@ export default function HowWeWork() {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
-          <div className="flex justify-center md:order-last">
-            <Card className="overflow-hidden rounded-xl shadow-2xl transition-transform duration-300 hover:scale-105 hover:shadow-accent/20">
-              <CardContent className="p-0">
-                {howWeWorkImage && (
-                  <Image
-                    src={howWeWorkImage.imageUrl}
-                    alt={howWeWorkImage.description}
-                    width={600}
-                    height={600}
-                    className="aspect-square w-full object-cover"
-                    data-ai-hint={howWeWorkImage.imageHint}
-                  />
-                )}
-              </CardContent>
-            </Card>
-          </div>
-          <div className="flex flex-col items-center md:items-start gap-6">
-            <Card className="w-full max-w-xl bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
-                <CardHeader className="p-0 mb-4 text-center md:text-left">
-                    <CardTitle className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
-                        Como empresas podem ajudar essa INICIATIVA?
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="p-0">
-                    <CardDescription className="max-w-[600px] text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center md:text-left">
-                        O Projeto Frederico recebe doações de pessoas físicas e preferencialmente de pessoas jurídicas, com certificação oficial de parceria social e divulgação institucional.
-                    </CardDescription>
-                </CardContent>
-            </Card>
+            <div className="flex flex-col items-center md:items-start gap-6">
+                <Card className="w-full max-w-xl bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
+                    <CardHeader className="p-0 mb-4 text-center md:text-left">
+                        <CardTitle className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
+                            Como empresas podem ajudar essa INICIATIVA?
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                        <CardDescription className="max-w-[600px] text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed text-center md:text-left">
+                            O Projeto Frederico recebe doações de pessoas físicas e preferencialmente de pessoas jurídicas, com certificação oficial de parceria social e divulgação institucional.
+                        </CardDescription>
+                    </CardContent>
+                </Card>
+            </div>
 
-            <Card className="w-full max-w-md bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
-                 <CardHeader className="p-0 mb-4">
-                    <CardTitle className="font-headline text-2xl font-bold text-white">
-                        As empresas podem apoiar de 3 formas:
-                    </CardTitle>
-                </CardHeader>
-                <CardContent className="p-0">
-                    <ul className="space-y-3 text-white/90">
-                        <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Ração</li>
-                        <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Castração</li>
-                        <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Apoio logístico</li>
-                    </ul>
-                    <div className="mt-6 flex justify-start">
-                        <Button variant="link" asChild className="text-accent hover:text-accent/80 p-0 h-auto">
-                             <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20como%20minha%20empresa%20pode%20apoiar%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">
-                                Fale conosco via WhatsApp
-                            </a>
-                        </Button>
-                    </div>
-                </CardContent>
-            </Card>
-
-          </div>
+            <div className="flex justify-center">
+                 <Card className="w-full max-w-md bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white">
+                     <CardHeader className="p-0 mb-4">
+                        <CardTitle className="font-headline text-2xl font-bold text-white">
+                            As empresas podem apoiar de 3 formas:
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                        <ul className="space-y-3 text-white/90">
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Ração</li>
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Castração</li>
+                            <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Apoio logístico</li>
+                        </ul>
+                        <div className="mt-6 flex justify-start">
+                            <Button variant="link" asChild className="text-accent hover:text-accent/80 p-0 h-auto">
+                                 <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20como%20minha%20empresa%20pode%20apoiar%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">
+                                    Fale conosco via WhatsApp
+                                </a>
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
         </div>
       </div>
     </section>
