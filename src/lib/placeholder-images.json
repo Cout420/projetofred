@@ -95,6 +95,18 @@
       "description": "A man playing fetch with his energetic puppy",
       "imageUrl": "https://images.unsplash.com/photo-1620325698009-4163b8f6d501?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2clMjBwbGF5aW5nfGVufDB8fHx8fDE3NjQ4NTQ4ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "dog playing"
+    },
+    {
+      "id": "social-1",
+      "description": "A person lovingly kissing her golden retriever.",
+      "imageUrl": "https://i.imgur.com/Rogm6VN.jpeg",
+      "imageHint": "person dog"
+    },
+    {
+      "id": "social-2",
+      "description": "Two happy puppies in a field.",
+      "imageUrl": "https://i.imgur.com/M8TWrKk.jpeg",
+      "imageHint": "puppies field"
     }
   ]
 }

@@ -8,6 +8,7 @@ import Gallery from '@/components/landing/gallery';
 import Testimonials from '@/components/landing/testimonials';
 import Contact from '@/components/landing/contact';
 import Footer from '@/components/landing/footer';
+import SocialResponsibility from '@/components/landing/social-responsibility';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Services />
         <HowWeWork />
         <Partnership />
+        <SocialResponsibility />
         <Gallery />
         <Testimonials />
         <Contact />
