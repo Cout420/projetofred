@@ -29,13 +29,10 @@ export default function Hero() {
                     Projeto Frederico
                 </CardTitle>
                 <CardDescription className="text-lg md:text-xl text-white/80 pt-2">
-                    Building Bonds, One Paw at a Time
+                    Cuidar é um ato de amor
                 </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-                <p className="md:text-lg">
-                    Discover the joy of a well-behaved companion. Our expert training methods are designed to bring out the best in your dog, creating a harmonious relationship for years to come.
-                </p>
+            <CardContent>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105">
                         <a href="#services">Our Services</a>
