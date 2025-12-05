@@ -19,7 +19,7 @@ export default function About() {
               Quem somos?
             </h2>
             <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Projeto Frederico was born from a deep love for dogs and a passion for understanding their behavior. Our mission is to foster a stronger bond between dogs and their owners through positive reinforcement and compassionate training methods. We believe every dog deserves a happy and well-behaved life.
+              O Projeto Frederico nasceu do compromisso com a causa animal e da certeza de que toda vida merece proteção, cuidado e dignidade. Atuamos no resgate, acolhimento, orientação, castração, e doação de alimentos para animais comunitários, ou pertencentes a famílias de baixa renda.
             </p>
             <div className="flex justify-center md:justify-start">
                 <Button size="lg" asChild className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
