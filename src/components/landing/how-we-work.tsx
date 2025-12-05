@@ -1,10 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Check, WhatsApp as WhatsAppIcon } from 'lucide-react';
-import { Heart } from 'lucide-react';
-import Link from 'next/link';
+import { Check } from 'lucide-react';
 
 const howWeWorkImage = PlaceHolderImages.find(img => img.id === 'how-we-work-1');
 const howWeWorkBgImage = PlaceHolderImages.find(img => img.id === 'how-we-work-bg');
