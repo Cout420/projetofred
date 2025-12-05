@@ -18,14 +18,20 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMounted, setIsMounted] = React.useState(false);
 
   React.useEffect(() => {
+    setIsMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <header className={cn(
@@ -78,3 +84,4 @@ export default function Header() {
       </div>
     </header>
   );
+}
