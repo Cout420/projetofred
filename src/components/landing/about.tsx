@@ -12,7 +12,7 @@ export default function About() {
         aria-hidden="true"
         className="absolute inset-0 z-0"
       >
-        <div className="absolute left-[-10rem] top-[-10rem] h-[40rem] w-[40rem] rounded-full bg-accent/10 blur-[10rem]" />
+        <div className="absolute left-[-15rem] top-[-15rem] h-[50rem] w-[50rem] rounded-full bg-accent/20 blur-[12rem]" />
       </div>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">

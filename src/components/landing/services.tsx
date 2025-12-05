@@ -28,8 +28,14 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-secondary">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="services" className="bg-secondary relative overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0"
+      >
+        <div className="absolute right-[-20rem] bottom-[-20rem] h-[50rem] w-[50rem] rounded-full bg-accent/10 blur-[12rem]" />
+      </div>
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Our Training Services</h2>
@@ -40,7 +46,7 @@ export default function Services() {
         </div>
         <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4">
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+            <Card key={index} className="flex flex-col text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl bg-background/50 backdrop-blur-sm">
               <CardHeader className="items-center">
                 <div className="mb-4 rounded-full bg-primary p-4 text-primary-foreground">
                   <service.icon className="h-8 w-8" />
