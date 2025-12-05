@@ -1,3 +1,88 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-1",
+      "description": "A happy dog running in a beautiful field at sunset",
+      "imageUrl": "https://images.unsplash.com/photo-1621706967208-dfd2c8779beb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkb2clMjBsYW5kc2NhcGV8ZW58MHx8fHwxNzY0OTA2ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog landscape"
+    },
+    {
+      "id": "about-1",
+      "description": "A person lovingly petting their dog",
+      "imageUrl": "https://images.unsplash.com/photo-1577447278822-37801be21738?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwZXJzb24lMjBkb2d8ZW58MHx8fHwxNzY0NzkwMDI0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person dog"
+    },
+    {
+      "id": "gallery-1",
+      "description": "A golden retriever smiling at the camera",
+      "imageUrl": "https://images.unsplash.com/photo-1554830072-52d78d0d4c18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGFwcHklMjBkb2d8ZW58MHx8fHwxNzY0ODg5NTk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy dog"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Two puppies playing in the grass",
+      "imageUrl": "https://images.unsplash.com/photo-1597046835715-16f81ac132c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwbGF5aW5nJTIwZG9nc3xlbnwwfHx8fDE3NjQ5MDY4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "playing dogs"
+    },
+    {
+      "id": "gallery-3",
+      "description": "A border collie catching a frisbee mid-air",
+      "imageUrl": "https://images.unsplash.com/photo-1758389298611-9b313c269bc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhY3RpdmUlMjBkb2d8ZW58MHx8fHwxNzY0OTA2ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "active dog"
+    },
+    {
+      "id": "gallery-4",
+      "description": "A small terrier wearing a cute bandana",
+      "imageUrl": "https://images.unsplash.com/photo-1558788353-f76d92427f16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2clMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjQ4MjYzMjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog portrait"
+    },
+    {
+      "id": "gallery-5",
+      "description": "A sleepy bulldog napping on a couch",
+      "imageUrl": "https://images.unsplash.com/photo-1579038144560-0cf69470be08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkb2clMjBzbGVlcGluZ3xlbnwwfHx8fDE3NjQ5MDY4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog sleeping"
+    },
+    {
+      "id": "gallery-6",
+      "description": "A german shepherd looking majestic",
+      "imageUrl": "https://images.unsplash.com/photo-1609998703567-84e63792c895?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkb2clMjBtYWplc3RpY3xlbnwwfHx8fDE3NjQ5MDY4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog majestic"
+    },
+    {
+      "id": "gallery-7",
+      "description": "A group of different dog breeds sitting together",
+      "imageUrl": "https://images.unsplash.com/photo-1733563040646-977e49e704a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxkb2dzJTIwZ3JvdXB8ZW58MHx8fHwxNzY0OTA2ODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dogs group"
+    },
+    {
+      "id": "gallery-8",
+      "description": "A fluffy poodle after a grooming session",
+      "imageUrl": "https://images.unsplash.com/photo-1600109007539-6b492eb69601?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkb2clMjBncm9vbWVkfGVufDB8fHx8MTc2NDkwNjgxNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog groomed"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "A woman happily hugging her well-behaved golden retriever",
+      "imageUrl": "https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkb2clMjBvd25lcnxlbnwwfHx8fDE3NjQ5MDY4MTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog owner"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "A man smiling with his confident-looking rescue dog",
+      "imageUrl": "https://images.unsplash.com/photo-1745719784437-0e1980447938?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBkb2d8ZW58MHx8fHwxNzY0ODM5NTMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man dog"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "A woman and her dog enjoying a peaceful walk in the park",
+      "imageUrl": "https://images.unsplash.com/photo-1636998094055-ec16a40164f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkb2clMjB3YWxraW5nfGVufDB8fHx8MTc2NDg3NjU4NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog walking"
+    },
+    {
+      "id": "testimonial-4",
+      "description": "A man playing fetch with his energetic puppy",
+      "imageUrl": "https://images.unsplash.com/photo-1620325698009-4163b8f6d501?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2clMjBwbGF5aW5nfGVufDB8fHx8MTc2NDg1NDg4MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dog playing"
+    }
+  ]
 }
