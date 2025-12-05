@@ -30,43 +30,48 @@ const services = [
   },
   {
     icon: Sparkles,
-    title: 'Canine Good Citizen',
-    description: 'Prepare your dog for the AKC Canine Good Citizen test, a certification of their good manners at home and in the community.',
-    isList: false,
+    title: 'Propósito',
+    description: [
+      'Reduzir o abandono, maus-tratos e superpopulação de animais',
+      'Incentivar a castração como política pública de saúde',
+      'Apoiar famílias em situação de vulnerabilidade',
+      'Promover o bem-estar e proteção aos animais em situação de rua',
+    ],
+    isList: true,
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="bg-secondary relative overflow-hidden">
+    <section id="services" className="bg-background relative overflow-hidden">
        <div
         aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-accent/20"
+        className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-orange-500/80"
       />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Our Training Services</h2>
-            <p className="max-w-[900px] text-secondary-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              We offer a range of services tailored to meet the unique needs of your dog at any stage of life.
+            <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Nossos Pilares</h2>
+            <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Conheça a base que sustenta o nosso projeto e o amor que nos move.
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-start gap-6 py-12 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl items-stretch gap-6 py-12 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4">
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl bg-background/50 backdrop-blur-sm">
+            <Card key={index} className="flex flex-col text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl bg-card">
               <CardHeader className="items-center">
                 <div className="mb-4 rounded-full bg-primary p-4 text-primary-foreground">
                   <service.icon className="h-8 w-8" />
                 </div>
                 <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-1 flex-col justify-between">
+              <CardContent className="flex flex-1 flex-col justify-between p-4">
                 {service.isList && Array.isArray(service.description) ? (
-                  <div className="text-left space-y-2">
+                  <div className="text-left space-y-2 text-sm text-muted-foreground">
                     {service.description.map((item, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <Check className="h-5 w-5 text-green-500" />
+                      <div key={i} className="flex items-start gap-2">
+                        <Check className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
                         <span>{item}</span>
                       </div>
                     ))}
@@ -74,8 +79,8 @@ export default function Services() {
                 ) : (
                   <CardDescription>{service.description}</CardDescription>
                 )}
-                <Button variant="link" asChild className="mt-4">
-                  <a href="#contact">Learn More</a>
+                <Button variant="link" asChild className="mt-4 text-accent">
+                  <a href="#contact">Fale Conosco</a>
                 </Button>
               </CardContent>
             </Card>
