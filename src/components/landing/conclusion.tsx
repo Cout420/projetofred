@@ -10,7 +10,11 @@ const conclusionImage2 = PlaceHolderImages.find(img => img.id === 'conclusion-2'
 
 export default function Conclusion() {
   return (
-    <section id="conclusion" className="bg-gradient-to-br from-primary to-green-950 w-full py-20 md:py-28 lg:py-36 text-primary-foreground relative overflow-hidden">
+    <section id="conclusion" className="bg-background w-full py-20 md:py-28 lg:py-36 relative overflow-hidden">
+        <div
+        aria-hidden="true"
+        className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/10"
+      />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
@@ -51,8 +55,8 @@ export default function Conclusion() {
             
             <Card className="bg-card text-card-foreground p-8 rounded-3xl shadow-2xl max-w-lg z-10 relative">
               <div className="absolute -top-10 left-1/2 -translate-x-1/2">
-                <div className="bg-accent rounded-full p-4 border-4 border-primary">
-                    <PawPrintIcon className="h-10 w-10 text-accent-foreground" />
+                <div className="bg-primary rounded-full p-4 border-4 border-background">
+                    <PawPrintIcon className="h-10 w-10 text-primary-foreground" />
                 </div>
               </div>
               <CardContent className="pt-12 text-center">
