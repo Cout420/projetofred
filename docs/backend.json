@@ -137,7 +137,8 @@
   },
   "auth": {
     "providers": [
-      "password"
+      "password",
+      "anonymous"
     ]
   },
   "firestore": {
@@ -149,7 +150,7 @@
           "schema": {
             "$ref": "#/backend/entities/Testimonial"
           },
-          "description": "Stores testimonials from clients. Write access restricted to admins.",
+          "description": "Stores client testimonials.  Admin access managed via /roles_admin/{uid}.",
           "params": [
             {
               "name": "testimonialId",
@@ -165,7 +166,7 @@
           "schema": {
             "$ref": "#/backend/entities/ContactFormSubmission"
           },
-          "description": "Stores contact form submissions. Public write access, read access restricted to admins.",
+          "description": "Stores contact form submissions. Write access is public, read access is restricted to admins, verified by the /roles_admin/{uid} collection.",
           "params": [
             {
               "name": "submissionId",
@@ -181,7 +182,7 @@
           "schema": {
             "$ref": "#/backend/entities/Service"
           },
-          "description": "Stores dog training services offered. Write access restricted to admins.",
+          "description": "Stores dog training services. Admin access managed via /roles_admin/{uid}.",
           "params": [
             {
               "name": "serviceId",
@@ -191,38 +192,38 @@
         }
       },
       {
-        "path": "/image_gallery/{galleryItemId}",
+        "path": "/image_gallery/{imageId}",
         "definition": {
           "entityName": "ImageGalleryItem",
           "schema": {
             "$ref": "#/backend/entities/ImageGalleryItem"
           },
-          "description": "Stores image gallery items. Write access restricted to admins.",
+          "description": "Stores images for the gallery. Admin access managed via /roles_admin/{uid}.",
           "params": [
             {
-              "name": "galleryItemId",
+              "name": "imageId",
               "description": "Unique identifier for the image gallery item."
             }
           ]
         }
       },
       {
-        "path": "/roles_admin/{userId}",
+        "path": "/roles_admin/{uid}",
         "definition": {
-          "entityName": "role",
+          "entityName": "user",
           "schema": {
-            "$ref": "#/backend/entities/role"
+            "$ref": "#/backend/entities/user"
           },
-          "description": "Stores admin roles. Document existence grants admin privileges.",
+          "description": "Database-Based Access Control: Existence of a document with the user's `uid` in this collection grants admin privileges.",
           "params": [
             {
-              "name": "userId",
-              "description": "User ID of the admin."
+              "name": "uid",
+              "description": "The Firebase User ID of the administrator."
             }
           ]
         }
       }
     ],
-    "reasoning": "The Firestore structure is designed to accommodate the data entities defined in the application and ensure secure access. The core entities are Testimonials, ContactFormSubmissions, Services, and ImageGalleryItems. The structure prioritizes security and ease of management with clearly defined roles.\n\n*   `/testimonials`: Stores testimonials. No authentication is required for listing testimonials, but write access is restricted to admins.\n*   `/contact_form_submissions`: Stores contact form submissions. Write access is public, but read access is restricted to admins.\n*   `/services`: Stores dog training services. No authentication is required for listing services, but write access is restricted to admins.\n*   `/image_gallery`: Stores image gallery items. No authentication is required for listing gallery items, but write access is restricted to admins.\n*   `/roles_admin/{userId}`: Indicates admin roles. Document existence grants admin privileges.\n\n**Authorization Independence:** Authorization independence is achieved through the use of the `/roles_admin/{userId}` collection. Admin access is determined by the existence of a document in this collection, eliminating the need to read other documents to determine authorization. The application utilizes simple DBAC roles.\n\n**QAPs Support:**\n*   Secure list operations are supported by segregating data into separate collections with homogeneous security postures. Public data (Testimonials, Services, ImageGalleryItems) is stored in separate collections, allowing open read access while restricting write access to admins only.\n*   The use of the `/roles_admin/{userId}` collection enables secure authentication and authorization, making it simple to implement QAPs (Rules are not Filters)."
+    "reasoning": "The Firestore structure is designed to accommodate the data entities defined for the Projeto Frederico Landing app, focusing on testimonials, contact form submissions, services, and image gallery items. The structure emphasizes clarity, security, and scalability.\n\n*   `/testimonials`: Stores client testimonials. This collection is globally readable to display social proof on the landing page. Access to create, update, and delete testimonials is restricted to admins. To achieve authorization independence, no denormalization is needed, as the access control is based on admin roles, verified by the `roles_admin` collection.\n*   `/contact_form_submissions`: Stores contact form submissions. Write access is public, allowing anyone to submit the form. Read access is restricted to admins to protect user data. Authorization independence is achieved as no data from other collections is needed to validate access to this collection.\n*   `/services`: Stores dog training services. This collection is globally readable to display service information on the landing page. Write access (create, update, delete) is restricted to admins, verified by the `roles_admin` collection.  Authorization independence is achieved as no data from other collections is needed to validate access to this collection.\n*   `/image_gallery`: Stores images for the gallery. Similar to testimonials and services, this collection is publicly readable, with write access restricted to admins.  Authorization independence is achieved as no data from other collections is needed to validate access to this collection.\n*   `/roles_admin/{uid}`: This collection implements DBAC (Database-Based Access Control). The existence of a document with the user's `uid` in this collection grants admin privileges. This approach is favored over custom claims for its simplicity and ease of management. Rules check for document existence to grant admin access.\n\n**Authorization Independence:**\nAuthorization independence is achieved by avoiding `get()` calls in security rules. Admin access is determined by the existence of a document in the `/roles_admin/{uid}` collection, eliminating the need to fetch user roles from other parts of the database. This simplifies the rules and ensures atomic operations.\n\n**QAPs (Rules are not Filters):**\nThe structure supports secure list operations by:\n\n*   Segregation: Data with different access requirements (e.g., public testimonials vs. private contact form submissions) are stored in separate collections. This allows for simple rules that grant read access to entire collections or restrict access based on admin roles.\n*   DBAC: Admin status is verified by checking for the existence of a document in the `/roles_admin/{uid}` collection, ensuring list operations are secure and efficient."
   }
 }
