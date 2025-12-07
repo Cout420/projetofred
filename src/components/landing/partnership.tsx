@@ -1,37 +1,41 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle2 } from 'lucide-react';
+import { Award, CheckCircle2, HeartHandshake, Truck } from 'lucide-react';
+import { PawPrintIcon } from '../icons/paw-print';
 
 const partnershipTiers = [
   {
+    icon: PawPrintIcon,
     title: 'Ração',
-    subtitle: '(Pacote de 10KG)',
-    description: null,
+    subtitle: '(Pacotes de 10KG)',
+    description: 'Garanta a alimentação dos nossos resgatados. Sua doação de ração é vital para a saúde e recuperação deles.',
     items: [
-      { level: 'Protetor Bronze', detail: 'Até 5 sacos de 10kg' },
-      { level: 'Protetor Prata', detail: 'De 6 a 10 sacos de 10kg' },
-      { level: 'Protetor Ouro', detail: 'Acima de 11 sacos de 10kg' },
+      { level: 'Protetor Bronze', detail: 'Até 5 sacos' },
+      { level: 'Protetor Prata', detail: 'De 6 a 10 sacos' },
+      { level: 'Protetor Ouro', detail: 'Acima de 11 sacos' },
     ],
     footer: 'Doação preferencialmente mensal',
   },
   {
+    icon: HeartHandshake,
     title: 'Castração',
-    subtitle: null,
-    description: 'Valor médio da castração em empresas parceiras do Projeto Frederico: R$ 158,70',
+    subtitle: 'Controle populacional e prevenção',
+    description: 'Ajude a custear castrações, uma ação essencial para a saúde pública e o bem-estar animal. Valor médio: R$ 158,70',
     items: [
-      { level: 'Protetor Bronze', detail: 'Até 5 Castrações' },
-      { level: 'Protetor Prata', detail: 'De 6 a 10 Castrações' },
-      { level: 'Protetor Ouro', detail: 'A partir de 11 Castrações' },
+      { level: 'Protetor Bronze', detail: 'Até 5 castrações' },
+      { level: 'Protetor Prata', detail: 'De 6 a 10 castrações' },
+      { level: 'Protetor Ouro', detail: 'A partir de 11 castrações' },
     ],
     footer: 'Doação preferencialmente mensal',
   },
   {
+    icon: Truck,
     title: 'Apoio Logístico',
-    subtitle: null,
-    description: 'A empresa pode financiar o profissional que auxilia nos resgates:',
+    subtitle: 'Suporte para resgates e transporte',
+    description: 'Financeie o profissional que dirige nosso veículo de resgate, garantindo que possamos chegar onde a ajuda é necessária.',
     items: [
-      { level: 'Motorista do veículo oficial do projeto', detail: null },
-      { level: 'Atuação de segunda a sexta-feira', detail: null },
-      { level: 'Salário médio', detail: 'R$ 2.100,00 + encargos' },
+      { level: 'Apoio Essencial', detail: 'Salário médio do motorista: R$ 2.100,00 + encargos' },
+      { level: 'Atuação', detail: 'Segunda a sexta-feira' },
+      { level: 'Impacto', detail: 'Viabiliza todos os resgates' },
     ],
     footer: null,
   },
@@ -43,6 +47,7 @@ export default function Partnership() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
+             <div className="inline-block rounded-lg bg-primary-foreground/10 px-3 py-1 text-sm text-primary-foreground">Nossos Parceiros</div>
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary-foreground sm:text-5xl">
               Qual o retorno para sua empresa?
             </h2>
@@ -53,24 +58,23 @@ export default function Partnership() {
         </div>
         <div className="mx-auto grid max-w-7xl items-stretch gap-8 py-12 md:grid-cols-2 lg:grid-cols-3">
           {partnershipTiers.map((tier) => (
-            <Card key={tier.title} className="flex flex-col rounded-2xl bg-card text-card-foreground shadow-2xl transition-transform duration-300 hover:scale-105">
-                <CardHeader className="items-center pb-4">
-                    <div className="relative mb-[-30px] z-10">
-                        <CheckCircle2 className="h-16 w-16 text-accent fill-white"/>
-                    </div>
-                </CardHeader>
-              <CardContent className="flex flex-1 flex-col justify-between pt-10">
-                <div className="text-center">
-                    <CardTitle className="font-headline text-3xl text-accent">{tier.title}</CardTitle>
-                    {tier.subtitle && <p className="text-muted-foreground mt-1">{tier.subtitle}</p>}
+            <Card key={tier.title} className="flex flex-col rounded-2xl bg-card text-card-foreground shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-accent/20 border-accent/20">
+              <CardHeader className="items-center text-center p-6">
+                <div className="mb-4 rounded-full bg-accent/10 p-4 text-accent">
+                  <tier.icon className="h-10 w-10" />
                 </div>
-
-                <div className="my-6 text-left">
-                  {tier.description && <p className="mb-4 text-sm text-foreground/90">{tier.description}</p>}
+                <CardTitle className="font-headline text-3xl text-primary">{tier.title}</CardTitle>
+                {tier.subtitle && <p className="text-muted-foreground mt-1 text-sm">{tier.subtitle}</p>}
+              </CardHeader>
+              <CardContent className="flex flex-1 flex-col justify-between p-6 pt-0">
+                <div>
+                  <p className="mb-6 text-center text-sm text-muted-foreground">{tier.description}</p>
                   <ul className="space-y-4">
                     {tier.items.map((item) => (
                       <li key={item.level} className="flex items-start gap-3">
-                        <div className="mt-1 h-2 w-2 rounded-full bg-primary" />
+                        <div className="mt-1">
+                          <Award className="h-5 w-5 text-accent" />
+                        </div>
                         <div>
                           <p className="font-semibold text-primary">{item.level}</p>
                           {item.detail && <p className="text-sm text-muted-foreground">{item.detail}</p>}
@@ -81,7 +85,7 @@ export default function Partnership() {
                 </div>
                 
                 {tier.footer && (
-                  <CardFooter className="p-0 pt-4 justify-center">
+                  <CardFooter className="p-0 pt-6 justify-center mt-auto">
                     <p className="text-xs italic text-muted-foreground">* {tier.footer}</p>
                   </CardFooter>
                 )}
