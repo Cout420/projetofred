@@ -40,7 +40,9 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="#" className="flex items-center gap-2" prefetch={false}>
           <PawPrintIcon className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl font-bold text-primary">Projeto Frederico</span>
+          <span className="font-headline text-xl font-bold">
+            <span className="text-accent">Projeto</span> <span className="text-primary">Frederico</span>
+          </span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map(link => (
@@ -66,7 +68,9 @@ export default function Header() {
               <div className="grid gap-4 p-4">
                 <Link href="#" className="flex items-center gap-2" prefetch={false}>
                     <PawPrintIcon className="h-6 w-6 text-primary" />
-                    <span className="font-headline text-xl font-bold text-primary">Projeto Frederico</span>
+                    <span className="font-headline text-xl font-bold">
+                        <span className="text-accent">Projeto</span> <span className="text-primary">Frederico</span>
+                    </span>
                 </Link>
                 {NAV_LINKS.map(link => (
                     <Link key={link.href} href={link.href} className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary" prefetch={false}>
