@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { PawPrintIcon } from '../icons/paw-print';
 import { ArrowDown } from 'lucide-react';
@@ -14,7 +13,7 @@ const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative h-[90vh] w-full min-h-[600px] flex items-center justify-center text-white">
+    <section id="hero" className="relative h-[90vh] w-full min-h-[700px] flex items-center justify-center text-white">
       {heroImage && (
         <Image
           src={heroImage.imageUrl}
@@ -25,38 +24,38 @@ export default function Hero() {
           data-ai-hint={heroImage.imageHint}
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-      <div className="relative container mx-auto px-4 md:px-6 z-10 flex flex-col items-center text-center">
-        <Card className="max-w-2xl bg-black/50 backdrop-blur-sm border-white/20 text-white animate-fade-in-up">
-            <CardHeader className="items-center">
-                <PawPrintIcon className="h-12 w-12 text-accent mb-4"/>
-                <CardTitle className="font-headline text-4xl md:text-6xl tracking-tight">
-                    Projeto Frederico
-                </CardTitle>
-                <CardDescription className="text-lg md:text-xl text-white/80 pt-2">
-                    Cuidar é um ato de amor
-                </CardDescription>
-                <p className="text-sm text-white/70 max-w-md pt-2">
-                    Promovemos o bem-estar e a proteção animal em Arujá com resgates, castração e apoio a famílias. Juntos, construímos uma comunidade mais solidária.
-                </p>
-            </CardHeader>
-            <CardContent>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105">
-                        <a href="https://www.instagram.com/chameofrederico/" target="_blank" rel="noopener noreferrer">
-                           <Instagram className="mr-2 h-4 w-4" /> Conheça nosso projeto
-                        </a>
-                    </Button>
-                    <Button size="lg" variant="outline" asChild className="border-accent bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105">
-                        <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">
-                            <WhatsAppIcon className="mr-2 h-4 w-4" /> Fale Conosco
-                        </a>
-                    </Button>
-                </div>
-            </CardContent>
-        </Card>
-        <a href="#about" className="absolute bottom-10 animate-bounce" aria-label="Scroll down">
-          <ArrowDown className="h-8 w-8 text-white/70"/>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+      <div className="relative container mx-auto px-4 md:px-6 z-10 flex flex-col items-center text-center animate-fade-in-up">
+        
+        <PawPrintIcon className="h-14 w-14 text-accent mb-4"/>
+        
+        <h1 className="font-headline text-5xl md:text-7xl tracking-tight font-bold text-white drop-shadow-lg">
+            Projeto Frederico
+        </h1>
+        
+        <p className="text-lg md:text-xl text-white/90 mt-2 drop-shadow-md">
+            Cuidar é um ato de amor
+        </p>
+
+        <p className="text-base text-white/80 max-w-2xl mt-4 drop-shadow-md">
+            Promovemos o bem-estar e a proteção animal em Arujá com resgates, castração e apoio a famílias. Juntos, construímos uma comunidade mais solidária.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105 shadow-lg">
+                <a href="https://www.instagram.com/chameofrederico/" target="_blank" rel="noopener noreferrer">
+                   <Instagram className="mr-2 h-5 w-5" /> Conheça nosso projeto
+                </a>
+            </Button>
+            <Button size="lg" variant="outline" asChild className="border-accent bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105 shadow-lg">
+                <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">
+                    <WhatsAppIcon className="mr-2 h-5 w-5" /> Fale Conosco
+                </a>
+            </Button>
+        </div>
+
+        <a href="#about" className="absolute -bottom-16 animate-bounce" aria-label="Scroll down">
+          <ArrowDown className="h-8 w-8 text-white/80 hover:text-white transition-colors"/>
         </a>
       </div>
     </section>
