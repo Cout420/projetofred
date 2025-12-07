@@ -10,6 +10,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useFirebaseApp } from '@/firebase/provider';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'O nome deve ter pelo menos 2 caracteres.' }),
@@ -21,6 +23,8 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
+  const app = useFirebaseApp();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -32,29 +36,37 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    const projectPhoneNumber = '5511940344310';
-    
-    const message = `*Nova Denúncia Recebida*
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (!app) {
+        toast({
+            variant: "destructive",
+            title: 'Uh oh! Algo deu errado.',
+            description: 'O serviço de banco de dados não está disponível. Tente novamente mais tarde.',
+        });
+        return;
+    }
+    try {
+      const firestore = getFirestore(app);
+      
+      await addDoc(collection(firestore, 'denuncias'), {
+        ...values,
+        createdAt: serverTimestamp(),
+      });
 
-*Nome:* ${values.name}
-*Email:* ${values.email}
-*Telefone:* ${values.phone || 'Não informado'}
-*Assunto:* ${values.subject}
+      toast({
+        title: 'Denúncia enviada com sucesso!',
+        description: 'Agradecemos sua colaboração. Sua denúncia foi registrada em nosso sistema.',
+      });
 
-*Mensagem:*
-${values.message}`;
-
-    const whatsappUrl = `https://wa.me/${projectPhoneNumber}?text=${encodeURIComponent(message)}`;
-    
-    window.open(whatsappUrl, '_blank');
-    
-    toast({
-      title: 'Abrindo WhatsApp...',
-      description: 'Sua denúncia está pronta para ser enviada.',
-    });
-
-    form.reset();
+      form.reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      toast({
+        variant: "destructive",
+        title: 'Uh oh! Algo deu errado.',
+        description: 'Não foi possível enviar sua denúncia. Tente novamente mais tarde.',
+      });
+    }
   }
 
   return (
@@ -142,9 +154,9 @@ ${values.message}`;
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full transition-transform duration-300 hover:scale-105" size="lg">
-                    Enviar Denúncia
-                    <Send className="ml-2 h-4 w-4" />
+                  <Button type="submit" className="w-full transition-transform duration-300 hover:scale-105" size="lg" disabled={form.formState.isSubmitting}>
+                    {form.formState.isSubmitting ? 'Enviando...' : 'Enviar Denúncia'}
+                    {!form.formState.isSubmitting && <Send className="ml-2 h-4 w-4" />}
                   </Button>
                 </form>
               </Form>

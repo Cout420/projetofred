@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "denuncia": {
+      "title": "Denúncia",
+      "description": "Schema para uma denúncia enviada através do formulário de contato.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Nome do denunciante."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email do denunciante."
+        },
+        "phone": {
+          "type": "string",
+          "description": "Telefone do denunciante (opcional)."
+        },
+        "subject": {
+          "type": "string",
+          "description": "Assunto da denúncia."
+        },
+        "message": {
+          "type": "string",
+          "description": "A mensagem da denúncia."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Data e hora de criação da denúncia."
+        }
+      },
+      "required": ["name", "email", "subject", "message", "createdAt"]
+    },
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Represents a user's public profile.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name."
+        }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["email"]
+  },
+  "firestore": {
+    "/denuncias/{denunciaId}": {
+      "schema": {
+        "$ref": "#/backend/entities/denuncia"
+      },
+      "description": "Coleção de denúncias enviadas."
+    },
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/backend/entities/UserProfile"
+      },
+      "description": "Stores public user profile information."
+    }
+  }
+}
