@@ -10,6 +10,7 @@ import Contact from '@/components/landing/contact';
 import Footer from '@/components/landing/footer';
 import SocialResponsibility from '@/components/landing/social-responsibility';
 import Conclusion from '@/components/landing/conclusion';
+import Impact from '@/components/landing/impact';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <About />
+        <Impact />
         <Services />
         <HowWeWork />
         <Partnership />
