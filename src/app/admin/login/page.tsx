@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label';
 import { PawPrintIcon } from '@/components/icons/paw-print';
 
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const auth = useAuth();
@@ -25,12 +25,14 @@ export default function AdminLoginPage() {
       return;
     }
     try {
+      // Adapt username to an email for Firebase Auth
+      const email = username.includes('@') ? username : `${username}@example.com`;
       await signInWithEmailAndPassword(auth, email, password);
       router.push('/admin');
     } catch (err: any) {
       console.error(err);
       if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
-        setError('E-mail ou senha inválidos.');
+        setError('Usuário ou senha inválidos.');
       } else {
         setError('Ocorreu um erro ao fazer login. Tente novamente.');
       }
@@ -52,14 +54,14 @@ export default function AdminLoginPage() {
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="username">Usuário</Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="admin@example.com"
+                id="username"
+                type="text"
+                placeholder="danilo"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="space-y-2">
