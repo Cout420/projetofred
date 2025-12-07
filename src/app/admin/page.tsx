@@ -188,9 +188,9 @@ export default function AdminPage() {
                                 <DialogClose asChild>
                                     <Button variant="outline">Cancelar</Button>
                                 </DialogClose>
-                                
-                                <Button variant="destructive" onClick={() => handleDelete(d.id)}>Excluir</Button>
-                                
+                                <DialogClose asChild>
+                                    <Button variant="destructive" onClick={() => handleDelete(d.id)}>Excluir</Button>
+                                 </DialogClose>
                             </div>
                         </DialogContent>
                     </Dialog>
