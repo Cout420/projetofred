@@ -137,8 +137,7 @@
   },
   "auth": {
     "providers": [
-      "password",
-      "anonymous"
+      "password"
     ]
   },
   "firestore": {
@@ -206,24 +205,7 @@
             }
           ]
         }
-      },
-      {
-        "path": "/roles_admin/{userId}",
-        "definition": {
-          "entityName": "role",
-          "schema": {
-            "$ref": "#/backend/entities/role"
-          },
-          "description": "Stores admin roles. Document existence grants admin privileges.",
-          "params": [
-            {
-              "name": "userId",
-              "description": "User ID of the admin."
-            }
-          ]
-        }
       }
-    ],
-    "reasoning": "The Firestore structure is designed to accommodate the data entities defined in the application and ensure secure access. The core entities are Testimonials, ContactFormSubmissions, Services, and ImageGalleryItems. The structure prioritizes security and ease of management with clearly defined roles.\n\n*   `/testimonials`: Stores testimonials. No authentication is required for listing testimonials, but write access is restricted to admins.\n*   `/contact_form_submissions`: Stores contact form submissions. Write access is public, but read access is restricted to admins.\n*   `/services`: Stores dog training services. No authentication is required for listing services, but write access is restricted to admins.\n*   `/image_gallery`: Stores image gallery items. No authentication is required for listing gallery items, but write access is restricted to admins.\n*   `/roles_admin/{userId}`: Indicates admin roles. Document existence grants admin privileges.\n\n**Authorization Independence:** Authorization independence is achieved through the use of the `/roles_admin/{userId}` collection. Admin access is determined by the existence of a document in this collection, eliminating the need to read other documents to determine authorization. The application utilizes simple DBAC roles.\n\n**QAPs Support:**\n*   Secure list operations are supported by segregating data into separate collections with homogeneous security postures. Public data (Testimonials, Services, ImageGalleryItems) is stored in separate collections, allowing open read access while restricting write access to admins only.\n*   The use of the `/roles_admin/{userId}` collection enables secure authentication and authorization, making it simple to implement QAPs (Rules are not Filters)."
+    ]
   }
 }
