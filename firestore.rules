@@ -1,131 +1,134 @@
 /**
- * Core Philosophy: This ruleset implements a Database-Based Access Control (DBAC) model.
- * A central `/roles_admin` collection dictates administrative privileges across the entire
- * application. Public-facing content like testimonials, services, and gallery images are
-
- * globally readable, but all write operations (create, update, delete) are strictly
- * limited to authenticated users designated as admins.
+ * This ruleset enforces a strict role-based access control (RBAC) model centered
+ * around a single 'admin' role. All data collections are considered administrative
+ * content and are fully locked down by default.
  *
- * Data Structure: The data is organized into flat, top-level collections for each major
- * content type (`/testimonials`, `/services`, `/image_gallery`, `/contact_form_submissions`).
- * A separate `/roles_admin` collection is used exclusively to manage administrative roles.
+ * Core Philosophy:
+ * Access is granted based on the existence of a document in the `/roles_admin`
+ * collection, which serves as a database-managed list of administrators. This
+ * approach (Database-Based Access Control or DBAC) avoids the need for custom
+ * claims and allows for dynamic role management without re-deploying tokens.
+ *
+ * Data Structure:
+ * - /testimonials/{testimonialId}: Content managed by admins.
+ * - /services/{serviceId}: Content managed by admins.
+ * - /contactFormEntries/{contactFormEntryId}: Content managed by admins.
+ * - /imageGalleryItems/{imageGalleryItemId}: Content managed by admins.
+ * - /roles_admin/{userId}: A special collection where the existence of a document
+ *   at a path matching a user's UID grants them admin privileges.
  *
  * Key Security Decisions:
- * - Admin Role Management: A user is considered an admin if a document with their UID
- *   exists in the `/roles_admin` collection. This provides a clear and manageable way to
- *   control high-privilege access.
- * - Public vs. Private Data: Content intended for public display is globally readable.
- *   Sensitive data, like contact form submissions, is write-only for the public and
- *   readable only by admins.
- * - Secure Role Administration: The `/roles_admin` collection itself is locked down.
- *   It is not writable from any client-side request to prevent users from escalating their
- *   own privileges. Admin roles must be assigned manually via the Firebase Console or a
- *   trusted server environment using the Admin SDK.
- *
- * Denormalization for Authorization: The use of the `/roles_admin/{uid}` collection is a
- * deliberate security pattern. It allows rules to perform a fast and efficient `exists()`
- * check to determine a user's role without needing to read other documents or use custom
- * claims, simplifying the rules and enhancing performance.
- *
- * Structural Segregation: The ruleset leverages separate collections for data with different
- * access patterns. For example, `/testimonials` is public-read while `/contact_form_submissions`
- * is private-read. This segregation is more secure and performant than using a single
- * collection with a status flag, especially for list operations.
+ * - Admin-Only Access: All content collections (`testimonials`, `services`, etc.)
+ *   can only be read or written to by authenticated users with the 'admin' role.
+ * - No Public Access: There is no publicly readable or writable data. All access
+ *   requires a user to be a designated admin.
+ * - Immutable Roles Collection: The `/roles_admin` collection is read-only within
+ *   these rules. This is a critical security measure to prevent a compromised
+ *   admin account from escalating privileges for other users. Admin roles must
+ *   be managed out-of-band (e.g., via the Firebase Console or an Admin SDK).
+ * - No Schema Validation: In line with the prototyping philosophy, these rules
+ *   strictly enforce authorization (who can access what) but do not validate the
+ *   shape or data types of the documents being written. This allows for flexible
+ *   and rapid development on the frontend.
  */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // --------------------------------
     // Helper Functions
-    // =================================
+    // --------------------------------
 
     /**
-     * Checks if a user is authenticated.
+     * Checks if the user is authenticated.
      */
     function isSignedIn() {
       return request.auth != null;
     }
 
     /**
-     * Checks if the authenticated user has an admin role.
-     * Admin status is granted if a document with the user's UID exists in the /roles_admin collection.
+     * Checks if the user has an admin role by verifying the existence of a
+     * corresponding document in the roles_admin collection.
      */
     function isAdmin() {
       return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
     }
-    
-    /**
-     * Verifies that a document exists before an update or delete operation.
-     */
-    function isExistingDoc() {
-      return resource != null;
-    }
 
+    // --------------------------------
     // Collection Rules
-    // =================================
+    // --------------------------------
 
     /**
-     * @description Publicly readable testimonials. Only admins can create, update, or delete them.
+     * @description Manages testimonials. Only admins can read, create, update, or delete testimonials.
      * @path /testimonials/{testimonialId}
-     * @allow (get) Any user, signed in or not, can read a testimonial.
-     * @deny (create) A non-admin user cannot create a new testimonial.
-     * @principle Public read access for content, with writes restricted to privileged roles.
+     * @allow (get) An admin user reads a single testimonial document.
+     * @deny (list) A non-admin or unauthenticated user tries to list testimonials.
+     * @principle Enforces a strict role-based access control for all operations.
      */
     match /testimonials/{testimonialId} {
-      allow get, list: if true;
+      allow get: if isAdmin();
+      allow list: if isAdmin();
       allow create: if isAdmin();
-      allow update, delete: if isAdmin() && isExistingDoc();
+      allow update: if isAdmin() && resource != null;
+      allow delete: if isAdmin() && resource != null;
     }
 
     /**
-     * @description Contact form submissions are write-only for the public. Only admins can read or manage them.
-     * @path /contact_form_submissions/{submissionId}
-     * @allow (create) Any anonymous or authenticated user can submit the contact form.
-     * @deny (get) A non-admin user cannot read a submission, even their own.
-     * @principle Protects sensitive user-submitted data by allowing public creation but restricting all reads to admins.
-     */
-    match /contact_form_submissions/{submissionId} {
-      allow get, list: if isAdmin();
-      allow create: if true;
-      allow update: if false; // Submissions should be immutable for users and admins.
-      allow delete: if isAdmin() && isExistingDoc();
-    }
-
-    /**
-     * @description Publicly readable services. Only admins can create, update, or delete them.
+     * @description Manages services. Only admins can read, create, update, or delete services.
      * @path /services/{serviceId}
-     * @allow (list) Any user, signed in or not, can list all available services.
-     * @deny (update) A non-admin user cannot modify an existing service.
-     * @principle Public read access for content, with writes restricted to privileged roles.
+     * @allow (create) An admin user adds a new service document.
+     * @deny (update) A non-admin user tries to modify an existing service.
+     * @principle Enforces a strict role-based access control for all operations.
      */
     match /services/{serviceId} {
-      allow get, list: if true;
+      allow get: if isAdmin();
+      allow list: if isAdmin();
       allow create: if isAdmin();
-      allow update, delete: if isAdmin() && isExistingDoc();
+      allow update: if isAdmin() && resource != null;
+      allow delete: if isAdmin() && resource != null;
     }
 
     /**
-     * @description Publicly readable image gallery. Only admins can add, update, or remove images.
-     * @path /image_gallery/{imageId}
-     * @allow (get) Any user, signed in or not, can view a gallery image.
-     * @deny (delete) A non-admin user cannot delete a gallery image.
-     * @principle Public read access for content, with writes restricted to privileged roles.
+     * @description Manages contact form submissions. Only admins can read or delete submissions.
+     * @path /contactFormEntries/{contactFormEntryId}
+     * @allow (list) An admin user lists all contact form submissions.
+     * @deny (get) An unauthenticated user tries to read a specific submission.
+     * @principle Enforces a strict role-based access control for all operations.
      */
-    match /image_gallery/{imageId} {
-      allow get, list: if true;
+    match /contactFormEntries/{contactFormEntryId} {
+      allow get: if isAdmin();
+      allow list: if isAdmin();
       allow create: if isAdmin();
-      allow update, delete: if isAdmin() && isExistingDoc();
+      allow update: if isAdmin() && resource != null;
+      allow delete: if isAdmin() && resource != null;
     }
 
     /**
-     * @description Manages admin roles. This collection is locked down from client-side writes to prevent privilege escalation.
-     * @path /roles_admin/{uid}
-     * @allow (get) An admin can check if another user is an admin.
-     * @deny (create) No user can grant themselves or others admin access from the client.
-     * @principle Secures the role management system by disallowing all client-side write operations.
+     * @description Manages image gallery items. Only admins can read, create, update, or delete gallery items.
+     * @path /imageGalleryItems/{imageGalleryItemId}
+     * @allow (delete) An admin user removes an image from the gallery.
+     * @deny (create) A signed-in, non-admin user tries to add a new image.
+     * @principle Enforces a strict role-based access control for all operations.
      */
-    match /roles_admin/{uid} {
-      allow get, list: if isAdmin();
+    match /imageGalleryItems/{imageGalleryItemId} {
+      allow get: if isAdmin();
+      allow list: if isAdmin();
+      allow create: if isAdmin();
+      allow update: if isAdmin() && resource != null;
+      allow delete: if isAdmin() && resource != null;
+    }
+
+    /**
+     * @description Defines which users are administrators. The existence of a document grants admin privileges.
+     * This collection is read-only to prevent privilege escalation from a compromised client.
+     * @path /roles_admin/{userId}
+     * @allow (get) An admin user checks if another user ID has admin privileges.
+     * @deny (create) An admin user tries to grant admin privileges to another user.
+     * @principle Prevents privilege escalation by making the roles collection immutable from the client.
+     */
+    match /roles_admin/{userId} {
+      allow get: if isAdmin();
+      allow list: if isAdmin();
       allow create: if false;
       allow update: if false;
       allow delete: if false;

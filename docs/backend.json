@@ -12,37 +12,67 @@
         },
         "authorName": {
           "type": "string",
-          "description": "Name of the testimonial author (dog owner)."
+          "description": "Name of the person giving the testimonial."
         },
-        "testimonialText": {
+        "authorTitle": {
           "type": "string",
-          "description": "The content of the testimonial."
+          "description": "Job title or other identifier of the author."
         },
-        "dogName": {
+        "content": {
           "type": "string",
-          "description": "Name of the dog mentioned in the testimonial."
+          "description": "The actual text of the testimonial."
         },
-        "imageURL": {
+        "imageUrl": {
           "type": "string",
-          "description": "URL of an image to display with the testimonial.",
+          "description": "URL of the author's image.",
           "format": "uri"
         }
       },
       "required": [
         "id",
         "authorName",
-        "testimonialText"
+        "content"
       ]
     },
-    "ContactFormSubmission": {
+    "Service": {
       "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "ContactFormSubmission",
+      "title": "Service",
       "type": "object",
-      "description": "Represents a submission from the contact form.",
+      "description": "Represents a dog training service offered.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the contact form submission."
+          "description": "Unique identifier for the service."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the service."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the service."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of an image representing the service.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "ContactFormEntry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactFormEntry",
+      "type": "object",
+      "description": "Represents an entry from the contact form.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the contact form entry."
         },
         "name": {
           "type": "string",
@@ -50,16 +80,12 @@
         },
         "email": {
           "type": "string",
-          "description": "Email address of the person submitting the form.",
+          "description": "Email of the person submitting the form.",
           "format": "email"
-        },
-        "phoneNumber": {
-          "type": "string",
-          "description": "Phone number of the person submitting the form."
         },
         "message": {
           "type": "string",
-          "description": "The message or project request from the person submitting the form."
+          "description": "The message from the contact form."
         },
         "submissionDate": {
           "type": "string",
@@ -75,63 +101,30 @@
         "submissionDate"
       ]
     },
-    "Service": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Service",
-      "type": "object",
-      "description": "Represents a dog training service offered.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the service."
-        },
-        "title": {
-          "type": "string",
-          "description": "Title of the service."
-        },
-        "description": {
-          "type": "string",
-          "description": "Description of the service."
-        },
-        "imageURL": {
-          "type": "string",
-          "description": "URL of an image representing the service.",
-          "format": "uri"
-        },
-        "price": {
-          "type": "number",
-          "description": "Price of the service."
-        }
-      },
-      "required": [
-        "id",
-        "title",
-        "description"
-      ]
-    },
     "ImageGalleryItem": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "ImageGalleryItem",
       "type": "object",
-      "description": "Represents an image in the image gallery.",
+      "description": "Represents an item in the image gallery.",
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unique identifier for the image gallery item."
+          "description": "Unique identifier for the gallery item."
         },
-        "imageURL": {
+        "imageUrl": {
           "type": "string",
           "description": "URL of the image.",
           "format": "uri"
         },
-        "description": {
+        "altText": {
           "type": "string",
-          "description": "Optional description of the image."
+          "description": "Alternative text for the image."
         }
       },
       "required": [
         "id",
-        "imageURL"
+        "imageUrl",
+        "altText"
       ]
     }
   },
@@ -150,27 +143,11 @@
           "schema": {
             "$ref": "#/backend/entities/Testimonial"
           },
-          "description": "Stores client testimonials.  Admin access managed via /roles_admin/{uid}.",
+          "description": "Stores testimonials for the website. Only accessible to admins.",
           "params": [
             {
               "name": "testimonialId",
-              "description": "Unique identifier for the testimonial."
-            }
-          ]
-        }
-      },
-      {
-        "path": "/contact_form_submissions/{submissionId}",
-        "definition": {
-          "entityName": "ContactFormSubmission",
-          "schema": {
-            "$ref": "#/backend/entities/ContactFormSubmission"
-          },
-          "description": "Stores contact form submissions. Write access is public, read access is restricted to admins, verified by the /roles_admin/{uid} collection.",
-          "params": [
-            {
-              "name": "submissionId",
-              "description": "Unique identifier for the contact form submission."
+              "description": "The unique identifier of the testimonial."
             }
           ]
         }
@@ -182,48 +159,64 @@
           "schema": {
             "$ref": "#/backend/entities/Service"
           },
-          "description": "Stores dog training services. Admin access managed via /roles_admin/{uid}.",
+          "description": "Stores dog training services offered. Only accessible to admins.",
           "params": [
             {
               "name": "serviceId",
-              "description": "Unique identifier for the service."
+              "description": "The unique identifier of the service."
             }
           ]
         }
       },
       {
-        "path": "/image_gallery/{imageId}",
+        "path": "/contactFormEntries/{contactFormEntryId}",
+        "definition": {
+          "entityName": "ContactFormEntry",
+          "schema": {
+            "$ref": "#/backend/entities/ContactFormEntry"
+          },
+          "description": "Stores contact form submissions. Only accessible to admins.",
+          "params": [
+            {
+              "name": "contactFormEntryId",
+              "description": "The unique identifier of the contact form entry."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/imageGalleryItems/{imageGalleryItemId}",
         "definition": {
           "entityName": "ImageGalleryItem",
           "schema": {
             "$ref": "#/backend/entities/ImageGalleryItem"
           },
-          "description": "Stores images for the gallery. Admin access managed via /roles_admin/{uid}.",
+          "description": "Stores images for the image gallery. Only accessible to admins.",
           "params": [
             {
-              "name": "imageId",
-              "description": "Unique identifier for the image gallery item."
+              "name": "imageGalleryItemId",
+              "description": "The unique identifier of the image gallery item."
             }
           ]
         }
       },
       {
-        "path": "/roles_admin/{uid}",
+        "path": "/roles_admin/{userId}",
         "definition": {
-          "entityName": "user",
+          "entityName": "role_admin",
           "schema": {
-            "$ref": "#/backend/entities/user"
+            "$ref": "#/backend/entities/role_admin"
           },
-          "description": "Database-Based Access Control: Existence of a document with the user's `uid` in this collection grants admin privileges.",
+          "description": "Indicates the user is an admin. Existence of the document grants admin privileges.",
           "params": [
             {
-              "name": "uid",
-              "description": "The Firebase User ID of the administrator."
+              "name": "userId",
+              "description": "The unique identifier of the user."
             }
           ]
         }
       }
     ],
-    "reasoning": "The Firestore structure is designed to accommodate the data entities defined for the Projeto Frederico Landing app, focusing on testimonials, contact form submissions, services, and image gallery items. The structure emphasizes clarity, security, and scalability.\n\n*   `/testimonials`: Stores client testimonials. This collection is globally readable to display social proof on the landing page. Access to create, update, and delete testimonials is restricted to admins. To achieve authorization independence, no denormalization is needed, as the access control is based on admin roles, verified by the `roles_admin` collection.\n*   `/contact_form_submissions`: Stores contact form submissions. Write access is public, allowing anyone to submit the form. Read access is restricted to admins to protect user data. Authorization independence is achieved as no data from other collections is needed to validate access to this collection.\n*   `/services`: Stores dog training services. This collection is globally readable to display service information on the landing page. Write access (create, update, delete) is restricted to admins, verified by the `roles_admin` collection.  Authorization independence is achieved as no data from other collections is needed to validate access to this collection.\n*   `/image_gallery`: Stores images for the gallery. Similar to testimonials and services, this collection is publicly readable, with write access restricted to admins.  Authorization independence is achieved as no data from other collections is needed to validate access to this collection.\n*   `/roles_admin/{uid}`: This collection implements DBAC (Database-Based Access Control). The existence of a document with the user's `uid` in this collection grants admin privileges. This approach is favored over custom claims for its simplicity and ease of management. Rules check for document existence to grant admin access.\n\n**Authorization Independence:**\nAuthorization independence is achieved by avoiding `get()` calls in security rules. Admin access is determined by the existence of a document in the `/roles_admin/{uid}` collection, eliminating the need to fetch user roles from other parts of the database. This simplifies the rules and ensures atomic operations.\n\n**QAPs (Rules are not Filters):**\nThe structure supports secure list operations by:\n\n*   Segregation: Data with different access requirements (e.g., public testimonials vs. private contact form submissions) are stored in separate collections. This allows for simple rules that grant read access to entire collections or restrict access based on admin roles.\n*   DBAC: Admin status is verified by checking for the existence of a document in the `/roles_admin/{uid}` collection, ensuring list operations are secure and efficient."
+    "reasoning": "The Firestore structure is designed to provide a secure and scalable data model for the Projeto Frederico Landing application. It prioritizes Authorization Independence, DBAC (Database Auth Based Control) without custom claims, and clear access modeling. The structure is segregated by entity type to maintain a homogeneous security posture within each collection.\n\n1.  **Authorization Independence:** Since there's no inherent user-generated content or complex ownership scenarios described, denormalization primarily focuses on pre-defined roles to manage administrative access. The `testimonials`, `services`, `imageGalleryItems`, and `contactFormEntries` collections do not inherently require user-specific authorization. Administrative access to these collections will be controlled via DBAC through the `/roles_admin/{uid}` collection. This eliminates any need for `get()` calls in security rules to check user roles, therefore enforcing authorization independence.\n\n2.  **QAPs (Rules are not Filters):**  `list` operations are secured by segregating data into collections with well-defined access patterns. Only authorized users (admins) can `list` documents in the `testimonials`, `services`, `imageGalleryItems`, and `contactFormEntries` collections via the `/roles_admin/{uid}` check.\n\n3.  **Structural Segregation:** Each entity type (`Testimonial`, `Service`, `ContactFormEntry`, `ImageGalleryItem`) has its own top-level collection. This ensures that all documents within a collection share the same security requirements. For example, all testimonials are managed by admins, and all contact form entries are visible to admins only.\n\n4. **DBAC (No Custom Claims):** Admin roles are managed via the `/roles_admin/{uid}` collection. The existence of a document for a user in this collection grants admin privileges.\n\n5. **Contact Form Handling:** All entries are stored at the top-level collection `/contactFormEntries`. There are no specific ownership considerations.\n"
   }
 }
