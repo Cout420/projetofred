@@ -6,6 +6,11 @@ service cloud.firestore {
       return request.auth != null;
     }
     
+    match /denuncias/{denunciaId} {
+      allow create: if true;
+      allow read, update, delete, list: if isSignedIn();
+    }
+
     match /testimonials/{testimonialId} {
       allow get: if true;
       allow list: if true;
