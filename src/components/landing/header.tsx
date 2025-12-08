@@ -9,10 +9,10 @@ import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#testimonials', label: 'Testimonials' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#about', label: 'Sobre' },
+  { href: '#gallery', label: 'Galeria' },
+  { href: '#testimonials', label: 'Depoimentos' },
+  { href: '#contact', label: 'Contato' },
 ];
 
 export default function Header() {
