@@ -16,7 +16,7 @@ import { useFirebaseApp } from '@/firebase/provider';
 const formSchema = z.object({
   name: z.string().min(2, { message: 'O nome deve ter pelo menos 2 caracteres.' }),
   email: z.string().email({ message: 'Por favor, insira um endereço de e-mail válido.' }),
-  phone: z.string().optional(),
+  phone: z.string().min(10, { message: 'O telefone deve ter pelo menos 10 dígitos.' }),
   subject: z.string().min(5, { message: 'O assunto deve ter pelo menos 5 caracteres.' }),
   message: z.string().min(10, { message: 'A mensagem deve ter pelo menos 10 caracteres.' }).max(500),
 });
@@ -120,7 +120,7 @@ export default function Contact() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Telefone (Opcional)</FormLabel>
+                        <FormLabel>Telefone</FormLabel>
                         <FormControl>
                           <Input placeholder="(11) 99999-9999" {...field} />
                         </FormControl>
