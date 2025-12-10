@@ -1,3 +1,5 @@
+'use client';
+
 import Header from '@/components/landing/header';
 import Hero from '@/components/landing/hero';
 import About from '@/components/landing/about';
@@ -11,7 +13,8 @@ import Footer from '@/components/landing/footer';
 import SocialResponsibility from '@/components/landing/social-responsibility';
 import Impact from '@/components/landing/impact';
 
-export default function Home() {
+// Even if params are not used, this can resolve some Next.js rendering issues.
+export default function Home({ params }: { params: any }) {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
