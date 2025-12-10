@@ -46,15 +46,15 @@ export default function Hero() {
             Projeto Frederico
         </h1>
         
-        <p className="text-lg md:text-xl text-white/90 mt-2 drop-shadow-md">
+        <p className="mt-4 text-lg md:text-xl text-white/90 drop-shadow-md">
             Ninguém pode ser deixado para trás
         </p>
 
-        <p className="text-base text-white/80 max-w-2xl mt-4 drop-shadow-md">
+        <p className="mt-2 max-w-2xl text-base text-white/80 drop-shadow-md">
             Promovemos o bem-estar e a proteção animal com resgates, castração e apoio a famílias. Juntos, construímos uma comunidade mais solidária.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105 shadow-lg">
                 <a href="https://www.instagram.com/chameofrederico/" target="_blank" rel="noopener noreferrer">
                    <Instagram className="mr-2 h-6 w-6" /> Conheça nosso trabalho
