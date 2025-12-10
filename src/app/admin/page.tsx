@@ -7,11 +7,12 @@ import { collection, onSnapshot, doc, deleteDoc, orderBy, query, type Timestamp 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from '@/components/ui/dialog';
-import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User } from 'lucide-react';
+import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User, Calendar, Type } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { getAuth, signOut } from 'firebase/auth';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Separator } from '@/components/ui/separator';
 
 interface Denuncia {
   id: string;
@@ -139,31 +140,52 @@ export default function AdminPage() {
                     </DialogTrigger>
                     <DialogContent className="max-w-2xl">
                         <DialogHeader>
-                        <DialogTitle className="text-2xl">{d.subject}</DialogTitle>
-                        <DialogDescription>
-                            Recebido em: {d.createdAt ? format(d.createdAt.toDate(), "dd 'de' MMMM 'de' yyyy, 'às' HH:mm", { locale: ptBR }) : 'Data indisponível'}
+                        <DialogTitle className="text-2xl font-bold">{d.subject}</DialogTitle>
+                         <DialogDescription className="flex items-center gap-2 text-sm text-muted-foreground pt-1">
+                            <Calendar className="h-4 w-4" />
+                            <span>Recebido em: {d.createdAt ? format(d.createdAt.toDate(), "dd 'de' MMMM 'de' yyyy, 'às' HH:mm", { locale: ptBR }) : 'Data indisponível'}</span>
                         </DialogDescription>
                         </DialogHeader>
-                        <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto pr-4">
-                            <div className="flex items-center gap-3">
-                                <User className="h-5 w-5 text-primary" />
-                                <div><span className="font-semibold">Nome:</span> {d.name}</div>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <Mail className="h-5 w-5 text-primary" />
-                                <div><span className="font-semibold">Email:</span> {d.email}</div>
-                            </div>
-                            {d.phone && (
-                                <div className="flex items-center gap-3">
-                                <Phone className="h-5 w-5 text-primary" />
-                                <div><span className="font-semibold">Telefone:</span> {d.phone}</div>
+                        <Separator className="my-4" />
+                        <div className="space-y-6 max-h-[60vh] overflow-y-auto pr-4">
+                            <div>
+                                <h3 className="font-semibold text-primary mb-3 text-lg">Informações do Denunciante</h3>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                                    <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                                        <User className="h-5 w-5 text-primary flex-shrink-0" />
+                                        <div>
+                                            <p className="text-muted-foreground text-xs">Nome</p>
+                                            <p className="font-medium text-foreground">{d.name}</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                                        <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+                                        <div>
+                                            <p className="text-muted-foreground text-xs">Email</p>
+                                            <p className="font-medium text-foreground">{d.email}</p>
+                                        </div>
+                                    </div>
+                                    {d.phone && (
+                                        <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg col-span-1 sm:col-span-2">
+                                            <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+                                            <div>
+                                                <p className="text-muted-foreground text-xs">Telefone</p>
+                                                <p className="font-medium text-foreground">{d.phone}</p>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                            <div className="flex items-start gap-3">
-                                <FileText className="h-5 w-5 text-primary mt-1" />
-                                <div>
-                                <span className="font-semibold">Mensagem:</span>
-                                <p className="text-muted-foreground mt-1 whitespace-pre-wrap">{d.message}</p>
+                            </div>
+                             <div>
+                                <h3 className="font-semibold text-primary mb-3 text-lg">Detalhes da Denúncia</h3>
+                                <div className="space-y-4">
+                                    <div className="flex items-start gap-3">
+                                        <FileText className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                                        <div>
+                                            <p className="font-semibold text-foreground">Mensagem</p>
+                                            <p className="text-muted-foreground mt-1 whitespace-pre-wrap text-sm">{d.message}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
