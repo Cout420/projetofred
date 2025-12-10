@@ -56,7 +56,7 @@ export default function Services() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
             <Card key={index} className="group relative flex flex-col overflow-hidden rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-accent/20">
               <div className="absolute top-0 h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
