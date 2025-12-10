@@ -38,7 +38,7 @@ export default function Hero() {
         </p>
 
         <p className="text-base text-white/80 max-w-2xl mt-4 drop-shadow-md">
-            Promovemos o bem-estar e a proteção animal em Arujá com resgates, castração e apoio a famílias. Juntos, construímos uma comunidade mais solidária.
+            Promovemos o bem-estar e a proteção animal com resgates, castração e apoio a famílias. Juntos, construímos uma comunidade mais solidária.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
