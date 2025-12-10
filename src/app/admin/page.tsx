@@ -1,13 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFirestore, useUser } from '@/firebase';
 import { collection, onSnapshot, doc, deleteDoc, orderBy, query, type Timestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from '@/components/ui/dialog';
-import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User, Calendar, Loader2 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User, Calendar, Loader2, Search, Frown } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { getAuth, signOut } from 'firebase/auth';
@@ -30,6 +31,7 @@ export default function AdminPage() {
   const router = useRouter();
   const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     if (!userLoading && !user) {
@@ -51,6 +53,20 @@ export default function AdminPage() {
       return () => unsubscribe();
     }
   }, [user, firestore]);
+
+  const filteredDenuncias = useMemo(() => {
+    if (!searchTerm) {
+      return denuncias;
+    }
+    const lowercasedTerm = searchTerm.toLowerCase();
+    return denuncias.filter(d => 
+        (d.name?.toLowerCase() ?? '').includes(lowercasedTerm) ||
+        (d.email?.toLowerCase() ?? '').includes(lowercasedTerm) ||
+        (d.phone?.toLowerCase() ?? '').includes(lowercasedTerm) ||
+        (d.subject?.toLowerCase() ?? '').includes(lowercasedTerm) ||
+        (d.message?.toLowerCase() ?? '').includes(lowercasedTerm)
+    );
+  }, [searchTerm, denuncias]);
   
   const handleDelete = async (id: string) => {
     if (firestore) {
@@ -85,13 +101,13 @@ export default function AdminPage() {
             <div className="wave"></div>
             <div className="wave"></div>
         </div>
-      <header className="sticky top-0 z-30 border-b bg-background/30 backdrop-blur-sm">
+      <header className="sticky top-0 z-30 border-b border-white/20 bg-background/30 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
             <div className="flex items-center gap-2">
                 <PawPrintIcon className="h-6 w-6 text-primary" />
                  <h1 className="text-xl font-bold text-primary">Painel de Denúncias</h1>
             </div>
-            <Button onClick={handleLogout} variant="ghost" size="sm">
+            <Button onClick={handleLogout} variant="ghost" size="sm" className="text-primary hover:bg-primary/10 hover:text-primary">
                 Sair <LogOut className="ml-2 h-4 w-4" />
             </Button>
         </div>
@@ -99,16 +115,43 @@ export default function AdminPage() {
 
       <main className="p-4 sm:p-6 md:p-8 relative z-10">
         <div className="container mx-auto">
-            {denuncias.length === 0 ? (
+            <div className="mb-8 max-w-md mx-auto">
+                <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Input
+                        type="text"
+                        placeholder="Pesquisar por nome, assunto, telefone..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full rounded-full bg-background/80 pl-10 pr-4 py-2 text-base backdrop-blur-sm focus:ring-accent"
+                    />
+                </div>
+            </div>
+
+            {loading ? (
+                 <div className="flex justify-center py-20">
+                    <Loader2 className="h-12 w-12 animate-spin text-white" />
+                 </div>
+            ) : filteredDenuncias.length === 0 ? (
                 <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-muted-foreground/30 bg-background/50 py-20 text-center backdrop-blur-sm">
-                    <Inbox className="h-16 w-16 text-muted-foreground/50" />
-                    <h2 className="mt-6 text-2xl font-semibold text-primary">Caixa de Entrada Vazia</h2>
-                    <p className="mt-2 text-muted-foreground">Nenhuma denúncia encontrada no momento.</p>
+                    {searchTerm ? (
+                        <>
+                            <Frown className="h-16 w-16 text-muted-foreground/50" />
+                            <h2 className="mt-6 text-2xl font-semibold text-primary">Nenhum Resultado</h2>
+                            <p className="mt-2 text-muted-foreground">Nenhuma denúncia encontrada para "{searchTerm}".</p>
+                        </>
+                    ) : (
+                        <>
+                            <Inbox className="h-16 w-16 text-muted-foreground/50" />
+                            <h2 className="mt-6 text-2xl font-semibold text-primary">Caixa de Entrada Vazia</h2>
+                            <p className="mt-2 text-muted-foreground">Nenhuma denúncia recebida no momento.</p>
+                        </>
+                    )}
                 </div>
             ) : (
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {denuncias.map((d) => (
-                    <Card key={d.id} className="flex flex-col rounded-2xl bg-background/80 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1 backdrop-blur-sm">
+                {filteredDenuncias.map((d) => (
+                    <Card key={d.id} className="flex flex-col rounded-2xl bg-background/80 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1 backdrop-blur-sm border-t-4 border-transparent hover:border-accent">
                         <CardHeader className="p-5">
                             <CardTitle className="truncate text-lg font-bold text-primary">{d.subject}</CardTitle>
                             <CardDescription className="flex items-center gap-2 pt-1 text-xs">
@@ -119,7 +162,7 @@ export default function AdminPage() {
                         <CardContent className="flex-grow p-5 pt-0">
                             <p className="text-muted-foreground line-clamp-3 text-sm">{d.message}</p>
                         </CardContent>
-                        <CardFooter className="flex justify-between items-center p-4 bg-secondary/70 rounded-b-2xl">
+                        <CardFooter className="flex justify-between items-center p-4 bg-secondary/20 rounded-b-2xl mt-auto">
                             <Dialog>
                                 <DialogTrigger asChild>
                                     <Button variant="outline" size="sm">
@@ -140,26 +183,26 @@ export default function AdminPage() {
                                         <div className="space-y-4">
                                             <h3 className="font-semibold text-primary text-lg">Informações do Denunciante</h3>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                                                <div className="flex items-center gap-3">
+                                                <div className="flex items-center gap-3 rounded-lg border bg-muted/50 p-3">
                                                     <User className="h-5 w-5 text-primary/70" />
                                                     <div>
-                                                        <p className="font-medium text-foreground">{d.name}</p>
                                                         <p className="text-muted-foreground text-xs">Nome</p>
+                                                        <p className="font-medium text-foreground">{d.name}</p>
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-3">
+                                                <div className="flex items-center gap-3 rounded-lg border bg-muted/50 p-3">
                                                     <Mail className="h-5 w-5 text-primary/70" />
                                                     <div>
-                                                        <p className="font-medium text-foreground">{d.email}</p>
                                                         <p className="text-muted-foreground text-xs">Email</p>
+                                                        <p className="font-medium text-foreground">{d.email}</p>
                                                     </div>
                                                 </div>
                                                 {d.phone && (
-                                                    <div className="flex items-center gap-3">
+                                                    <div className="flex items-center gap-3 rounded-lg border bg-muted/50 p-3">
                                                         <Phone className="h-5 w-5 text-primary/70" />
                                                         <div>
-                                                            <p className="font-medium text-foreground">{d.phone}</p>
                                                             <p className="text-muted-foreground text-xs">Telefone</p>
+                                                            <p className="font-medium text-foreground">{d.phone}</p>
                                                         </div>
                                                     </div>
                                                 )}
@@ -211,3 +254,5 @@ export default function AdminPage() {
     </div>
   );
 }
+
+    
