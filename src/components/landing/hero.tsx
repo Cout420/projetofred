@@ -6,10 +6,12 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { PawPrintIcon } from '../icons/paw-print';
 import { ArrowDown } from 'lucide-react';
 import { Instagram } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const heroImage = PlaceHolderImages.find(img => img.id === 'hero-1');
 
 export default function Hero() {
+  const { ref, style } = useScrollAnimation();
   return (
     <section id="hero" className="relative h-[90vh] w-full min-h-[700px] flex items-center justify-center text-white">
       {heroImage && (
@@ -23,7 +25,7 @@ export default function Hero() {
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-      <div className="relative container mx-auto px-4 md:px-6 z-10 flex flex-col items-center text-center animate-fade-in-up">
+      <div ref={ref} style={style} className="relative container mx-auto px-4 md:px-6 z-10 flex flex-col items-center text-center transition-all duration-700">
         
         <PawPrintIcon className="h-14 w-14 text-accent mb-4"/>
         
@@ -68,3 +70,5 @@ export default function Hero() {
     </section>
   );
 }
+
+    
