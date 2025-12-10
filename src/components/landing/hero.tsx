@@ -34,7 +34,7 @@ export default function Hero() {
         </h1>
         
         <p className="text-lg md:text-xl text-white/90 mt-2 drop-shadow-md">
-            Cuidar é um ato de amor
+            Ninguém pode ser deixado para trás
         </p>
 
         <p className="text-base text-white/80 max-w-2xl mt-4 drop-shadow-md">
