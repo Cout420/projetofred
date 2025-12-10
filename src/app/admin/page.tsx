@@ -30,18 +30,6 @@ export default function AdminPage() {
   const router = useRouter();
   const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
   const [loading, setLoading] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
 
   useEffect(() => {
     if (!userLoading && !user) {
@@ -81,10 +69,10 @@ export default function AdminPage() {
   };
 
   const backgroundStyle: CSSProperties = {
-    '--mouse-x': `${mousePosition.x}px`,
-    '--mouse-y': `${mousePosition.y}px`,
-    background: `radial-gradient(600px at var(--mouse-x) var(--mouse-y), hsla(var(--primary) / 0.15), transparent 80%)`,
-    transition: 'background 0.3s ease-out',
+      backgroundImage: `
+        radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #10b981 100%)
+      `,
+      backgroundSize: "100% 100%",
   };
 
   if (userLoading || loading) {
@@ -98,7 +86,7 @@ export default function AdminPage() {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-secondary" style={backgroundStyle}>
+    <div className="min-h-screen w-full relative" style={backgroundStyle}>
       <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
             <div className="flex items-center gap-2">
@@ -225,5 +213,3 @@ export default function AdminPage() {
     </div>
   );
 }
-
-    
