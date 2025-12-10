@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { Users, PawPrint, Syringe, Drumstick } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
@@ -67,8 +67,8 @@ export default function Impact() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <section id="impact" ref={ref} className="bg-primary w-full py-20 md:py-28 lg:py-32">
-      <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.5s ease-out, transform 0.5s ease-out' }} className="container mx-auto px-4 md:px-6">
+    <section id="impact" className="bg-primary w-full py-20 md:py-28 lg:py-32">
+      <div ref={ref} style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.7s ease-out, transform 0.7s ease-out' }} className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary-foreground sm:text-5xl">

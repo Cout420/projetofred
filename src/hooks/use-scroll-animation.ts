@@ -5,10 +5,20 @@ import { useState, useEffect, useRef, CSSProperties } from 'react';
 interface UseScrollAnimationOptions {
   threshold?: number;
   triggerOnce?: boolean;
+  transition?: string;
+  initialStyle?: CSSProperties;
+  finalStyle?: CSSProperties;
 }
 
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
-  const { threshold = 0.1, triggerOnce = true } = options;
+  const {
+    threshold = 0.1,
+    triggerOnce = true,
+    transition = 'opacity 700ms ease-in-out, transform 700ms ease-in-out',
+    initialStyle = { opacity: 0, transform: 'translateY(30px)' },
+    finalStyle = { opacity: 1, transform: 'translateY(0)' },
+  } = options;
+
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -22,9 +32,9 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
               observer.unobserve(entry.target);
             }
           } else {
-             if (!triggerOnce) {
-                setIsVisible(false);
-             }
+            if (!triggerOnce) {
+              setIsVisible(false);
+            }
           }
         });
       },
@@ -44,9 +54,8 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   }, [ref, threshold, triggerOnce]);
 
   const style: CSSProperties = {
-    transition: 'opacity 700ms ease-in-out, transform 700ms ease-in-out',
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+    transition,
+    ...(isVisible ? finalStyle : initialStyle),
   };
 
   return { ref, isVisible, style };

@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, CheckCircle2, HeartHandshake, Truck } from 'lucide-react';
+import { Award, HeartHandshake, Truck } from 'lucide-react';
 import { PawPrintIcon } from '../icons/paw-print';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
