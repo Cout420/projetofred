@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFirestore, useUser } from '@/firebase';
 import { collection, onSnapshot, doc, deleteDoc, orderBy, query, type Timestamp } from 'firebase/firestore';
@@ -68,17 +68,10 @@ export default function AdminPage() {
     router.push('/admin/login');
   };
 
-  const backgroundStyle: CSSProperties = {
-      backgroundImage: `
-        radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #10b981 100%)
-      `,
-      backgroundSize: "100% 100%",
-  };
-
   if (userLoading || loading) {
     return (
-        <div className="flex min-h-screen items-center justify-center bg-secondary">
-           <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <div className="flex min-h-screen items-center justify-center animated-gradient-bg">
+           <Loader2 className="h-12 w-12 animate-spin text-white" />
         </div>
     );
   }
@@ -86,8 +79,13 @@ export default function AdminPage() {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen w-full relative" style={backgroundStyle}>
-      <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur-sm">
+    <div className="min-h-screen w-full relative animated-gradient-bg overflow-hidden">
+        <div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+            <div className="wave"></div>
+        </div>
+      <header className="sticky top-0 z-30 border-b bg-background/30 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
             <div className="flex items-center gap-2">
                 <PawPrintIcon className="h-6 w-6 text-primary" />
@@ -99,7 +97,7 @@ export default function AdminPage() {
         </div>
       </header>
 
-      <main className="p-4 sm:p-6 md:p-8">
+      <main className="p-4 sm:p-6 md:p-8 relative z-10">
         <div className="container mx-auto">
             {denuncias.length === 0 ? (
                 <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-muted-foreground/30 bg-background/50 py-20 text-center backdrop-blur-sm">
