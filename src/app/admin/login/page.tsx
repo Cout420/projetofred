@@ -9,21 +9,27 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PawPrintIcon } from '@/components/icons/paw-print';
+import { Loader2 } from 'lucide-react';
 
 export default function AdminLoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const auth = useAuth();
   const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    setLoading(true);
+
     if (!auth) {
       setError('Serviço de autenticação não disponível.');
+      setLoading(false);
       return;
     }
+
     try {
       // Adapt username to an email for Firebase Auth
       const email = username.includes('@') ? username : `${username}@example.com`;
@@ -36,22 +42,24 @@ export default function AdminLoginPage() {
       } else {
         setError('Ocorreu um erro ao fazer login. Tente novamente.');
       }
+    } finally {
+        setLoading(false);
     }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-secondary">
-      <Card className="mx-auto max-w-sm w-full">
-        <CardHeader className="text-center">
-          <div className="flex justify-center mb-4">
-            <PawPrintIcon className="h-10 w-10 text-primary" />
+    <div className="flex min-h-screen items-center justify-center bg-secondary p-4">
+      <Card className="w-full max-w-sm rounded-2xl shadow-2xl transition-all duration-500 hover:shadow-primary/20">
+        <CardHeader className="text-center p-6 sm:p-8">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+            <PawPrintIcon className="h-8 w-8" />
           </div>
-          <CardTitle className="text-2xl font-bold">Painel Administrativo</CardTitle>
-          <CardDescription>
-            Faça login para gerenciar as denúncias.
+          <CardTitle className="text-3xl font-bold text-primary">Painel Administrativo</CardTitle>
+          <CardDescription className="text-muted-foreground pt-1">
+            Acesse para gerenciar as denúncias.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6 sm:p-8 pt-0">
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="username">Usuário</Label>
@@ -62,6 +70,7 @@ export default function AdminLoginPage() {
                 required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                disabled={loading}
               />
             </div>
             <div className="space-y-2">
@@ -72,11 +81,13 @@ export default function AdminLoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                disabled={loading}
               />
             </div>
             {error && <p className="text-sm font-medium text-destructive">{error}</p>}
-            <Button type="submit" className="w-full">
-              Login
+            <Button type="submit" className="w-full !mt-6" disabled={loading}>
+              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              {loading ? 'Entrando...' : 'Login'}
             </Button>
           </form>
         </CardContent>
