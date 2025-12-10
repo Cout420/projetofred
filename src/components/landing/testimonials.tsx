@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const testimonials = [
   {
@@ -63,6 +64,7 @@ const testimonials = [
 export default function Testimonials() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
+  const { ref, style } = useScrollAnimation();
 
   React.useEffect(() => {
     if (!api) {
@@ -77,8 +79,8 @@ export default function Testimonials() {
   const testimonialImages = PlaceHolderImages.filter(img => img.id.startsWith('testimonial-'));
 
   return (
-    <section id="testimonials" className="bg-background py-12 md:py-24 lg:py-32 animate-fade-in-up">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="testimonials" className="bg-background py-12 md:py-24 lg:py-32">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 transition-all duration-700">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Relatos reais de amor e resgate</h2>
@@ -91,7 +93,7 @@ export default function Testimonials() {
                 const image = testimonialImages.find(img => img.id === testimonial.imageId);
                 return (
                   <CarouselItem key={testimonial.id}>
-                    <Card className="overflow-hidden shadow-lg">
+                    <Card className="overflow-hidden shadow-lg transition-transform duration-500 hover:scale-105">
                       <div className="grid md:grid-cols-3">
                         <div className="md:col-span-1">
                           {image && (

@@ -12,6 +12,7 @@ import { Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useFirebaseApp } from '@/firebase/provider';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'O nome deve ter pelo menos 2 caracteres.' }),
@@ -24,6 +25,7 @@ const formSchema = z.object({
 export default function Contact() {
   const { toast } = useToast();
   const app = useFirebaseApp();
+  const { ref, style } = useScrollAnimation();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -70,8 +72,8 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-secondary py-12 md:py-24 lg:py-32 animate-fade-in-up">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="contact" className="bg-secondary py-12 md:py-24 lg:py-32">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 transition-all duration-700">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
                 <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Canal de Denúncias</h2>
@@ -81,7 +83,7 @@ export default function Contact() {
             </div>
         </div>
         <div className="mx-auto max-w-2xl py-12">
-          <Card className="shadow-lg">
+          <Card className="shadow-lg transition-transform duration-500 hover:scale-105">
             <CardHeader>
                 <CardTitle className="font-headline text-2xl">Formulário de Denúncia</CardTitle>
                 <CardDescription>Descreva a situação com o máximo de detalhes possível.</CardDescription>

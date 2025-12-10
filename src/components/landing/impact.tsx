@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { Users, PawPrint, Syringe, Drumstick } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const stats = [
   {
@@ -63,34 +64,11 @@ const Counter = ({ endValue, suffix = '' }: { endValue: number; suffix?: string 
 };
 
 export default function Impact() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <section id="impact" ref={sectionRef} className="bg-primary w-full py-20 md:py-28 lg:py-32 animate-fade-in-up">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="impact" ref={ref} className="bg-primary w-full py-20 md:py-28 lg:py-32">
+      <div style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(20px)', transition: 'opacity 0.5s ease-out, transform 0.5s ease-out' }} className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary-foreground sm:text-5xl">
@@ -103,7 +81,7 @@ export default function Impact() {
         </div>
         <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 grid-cols-2 md:grid-cols-4 md:gap-12">
           {stats.map((stat, index) => (
-            <div key={index} className="flex flex-col items-center text-center space-y-4">
+            <div key={index} className="flex flex-col items-center text-center space-y-4 transition-transform duration-300 hover:scale-110">
               <div className="rounded-full bg-primary-foreground/10 p-5 text-accent">
                 <stat.icon className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>

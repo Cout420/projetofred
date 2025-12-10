@@ -1,8 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 import { PawPrintIcon } from '../icons/paw-print';
 import { ArrowRightCircle, Award, Megaphone, Star } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const benefits = [
     {
@@ -22,13 +25,15 @@ const benefits = [
 const image1 = PlaceHolderImages.find(img => img.id === 'social-1');
 
 export default function SocialResponsibility() {
+  const { ref, style } = useScrollAnimation();
+
   return (
-    <section id="social-responsibility" className="bg-secondary relative w-full overflow-hidden py-20 md:py-28 lg:py-36 text-foreground animate-fade-in-up">
+    <section id="social-responsibility" className="bg-secondary relative w-full overflow-hidden py-20 md:py-28 lg:py-36 text-foreground">
        <div
         aria-hidden="true"
         className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/80"
       />
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700">
         <div className="grid md:grid-cols-2 gap-16 items-center">
 
           {/* Left Column */}
@@ -45,7 +50,7 @@ export default function SocialResponsibility() {
 
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-background border border-border shadow-md">
+                <div key={index} className="flex items-center gap-4 p-4 rounded-lg bg-background border border-border shadow-md transition-transform duration-300 hover:scale-105 hover:border-accent">
                    <ArrowRightCircle className="h-6 w-6 text-accent flex-shrink-0" />
                    <p className="text-sm font-medium text-foreground">{benefit.text}</p>
                 </div>
@@ -61,7 +66,7 @@ export default function SocialResponsibility() {
              </h2>
              <div className="w-full max-w-md lg:max-w-lg">
                 {image1 && (
-                     <Card className="overflow-hidden rounded-3xl shadow-2xl w-full transition-transform duration-300 hover:scale-105">
+                     <Card className="overflow-hidden rounded-3xl shadow-2xl w-full transition-transform duration-500 hover:scale-105">
                         <CardContent className="p-0">
                             <Image
                                 src={image1.imageUrl}

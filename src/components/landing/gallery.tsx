@@ -5,15 +5,17 @@ import Image from 'next/image';
 import { PlaceHolderImages, type ImagePlaceholder } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const galleryImages = PlaceHolderImages.filter(img => img.id.startsWith('gallery-'));
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = React.useState<ImagePlaceholder | null>(null);
+  const { ref, style } = useScrollAnimation();
 
   return (
-    <section id="gallery" className="bg-background py-12 md:py-24 lg:py-32 animate-fade-in-up">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="gallery" className="bg-background py-12 md:py-24 lg:py-32">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 transition-all duration-700">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Galeria de Fotos</h2>
@@ -26,7 +28,7 @@ export default function Gallery() {
           <Dialog>
             {galleryImages.map((image, index) => (
               <DialogTrigger key={image.id} asChild onClick={() => setSelectedImage(image)}>
-                <Card className="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/20 cursor-pointer relative">
+                <Card className="group overflow-hidden rounded-xl shadow-lg transition-all duration-500 hover:!scale-105 hover:shadow-xl hover:shadow-accent/20 cursor-pointer relative">
                   <CardContent className="p-0">
                     <Image
                       src={image.imageUrl}

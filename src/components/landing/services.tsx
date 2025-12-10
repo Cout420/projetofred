@@ -1,6 +1,9 @@
+'use client';
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PawPrintIcon } from '../icons/paw-print';
 import { Eye, Heart, Sparkles, Check } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const services = [
   {
@@ -41,13 +44,15 @@ const services = [
 ];
 
 export default function Services() {
+  const { ref, style } = useScrollAnimation();
+
   return (
-    <section id="services" className="bg-background relative overflow-hidden py-12 md:py-24 lg:py-32 animate-fade-in-up">
+    <section id="services" className="bg-background relative overflow-hidden py-12 md:py-24 lg:py-32">
        <div
         aria-hidden="true"
         className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/10"
       />
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Nossos Pilares</h2>
@@ -58,7 +63,7 @@ export default function Services() {
         </div>
         <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <Card key={index} className="group relative flex flex-col overflow-hidden rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-accent/20">
+            <Card key={index} className="group relative flex flex-col overflow-hidden rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-500 hover:!scale-105 hover:shadow-accent/20">
               <div className="absolute top-0 h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <CardHeader className="items-center text-center p-6">
                 <div className="mb-4 rounded-full border-2 border-primary/10 bg-primary/5 p-4 text-primary transition-all duration-300 group-hover:border-accent/20 group-hover:bg-accent/10 group-hover:text-accent group-hover:scale-110">

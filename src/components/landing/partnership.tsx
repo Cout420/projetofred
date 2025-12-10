@@ -1,6 +1,9 @@
+'use client';
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, CheckCircle2, HeartHandshake, Truck } from 'lucide-react';
 import { PawPrintIcon } from '../icons/paw-print';
+import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 
 const partnershipTiers = [
   {
@@ -42,9 +45,11 @@ const partnershipTiers = [
 ];
 
 export default function Partnership() {
+  const { ref, style } = useScrollAnimation();
+
   return (
-    <section id="partnership" className="bg-primary w-full py-20 md:py-28 lg:py-36 animate-fade-in-up">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="partnership" className="bg-primary w-full py-20 md:py-28 lg:py-36">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 transition-all duration-700">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
              <div className="inline-block rounded-lg bg-primary-foreground/10 px-3 py-1 text-sm text-primary-foreground">Nossos Parceiros</div>
@@ -58,9 +63,9 @@ export default function Partnership() {
         </div>
         <div className="mx-auto grid max-w-7xl items-stretch gap-8 py-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {partnershipTiers.map((tier) => (
-            <Card key={tier.title} className="flex flex-col rounded-2xl bg-card text-card-foreground shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-accent/20 border-t-4 border-accent/20">
+            <Card key={tier.title} className="flex flex-col rounded-2xl bg-card text-card-foreground shadow-2xl transition-all duration-500 hover:!scale-105 hover:shadow-accent/20 border-t-4 border-accent/20">
               <CardHeader className="items-center text-center p-6">
-                <div className="mb-4 rounded-full bg-accent/10 p-4 text-accent">
+                <div className="mb-4 rounded-full bg-accent/10 p-4 text-accent transition-transform duration-300 group-hover:scale-110">
                   <tier.icon className="h-10 w-10" />
                 </div>
                 <CardTitle className="font-headline text-3xl text-primary">{tier.title}</CardTitle>
