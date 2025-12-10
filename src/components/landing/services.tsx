@@ -52,7 +52,7 @@ export default function Services() {
         aria-hidden="true"
         className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/10"
       />
-      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Nossos Pilares</h2>

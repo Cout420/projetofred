@@ -17,7 +17,7 @@ export default function About() {
         aria-hidden="true"
         className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-accent/80"
       />
-      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
           <div className="space-y-4 text-center md:text-left">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">

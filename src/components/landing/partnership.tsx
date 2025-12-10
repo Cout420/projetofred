@@ -49,7 +49,7 @@ export default function Partnership() {
 
   return (
     <section id="partnership" className="bg-primary w-full py-20 md:py-28 lg:py-36">
-      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 transition-all duration-700">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
              <div className="inline-block rounded-lg bg-primary-foreground/10 px-3 py-1 text-sm text-primary-foreground">Nossos Parceiros</div>

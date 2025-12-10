@@ -25,7 +25,7 @@ export default function HowWeWork() {
         )}
         <div className="absolute inset-0 bg-black/60" />
 
-      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700">
+      <div ref={ref} style={style} className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid items-center gap-10 md:grid-cols-2 lg:gap-16">
             <div className="flex flex-col items-center md:items-start gap-6">
                 <Card className="w-full max-w-xl bg-black/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border-white/20 text-white transition-transform duration-500 hover:scale-105">
