@@ -9,7 +9,6 @@ import Testimonials from '@/components/landing/testimonials';
 import Contact from '@/components/landing/contact';
 import Footer from '@/components/landing/footer';
 import SocialResponsibility from '@/components/landing/social-responsibility';
-import Conclusion from '@/components/landing/conclusion';
 import Impact from '@/components/landing/impact';
 
 export default function Home() {
@@ -24,7 +23,6 @@ export default function Home() {
         <HowWeWork />
         <Partnership />
         <SocialResponsibility />
-        <Conclusion />
         <Gallery />
         <Testimonials />
         <Contact />
