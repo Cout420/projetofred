@@ -1,8 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { PawPrintIcon } from '../icons/paw-print';
 import { Eye, Heart, Sparkles, Check } from 'lucide-react';
-import Link from 'next/link';
 
 const services = [
   {
@@ -58,33 +56,29 @@ export default function Services() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-stretch gap-6 py-12 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (
-            <Card key={index} className="flex flex-col text-center shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl bg-card">
-              <CardHeader className="items-center">
-                <div className="mb-4 rounded-full bg-primary p-4 text-primary-foreground">
+            <Card key={index} className="group relative flex flex-col overflow-hidden rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-accent/20">
+              <div className="absolute top-0 h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <CardHeader className="items-center text-center p-6">
+                <div className="mb-4 rounded-full border-2 border-primary/10 bg-primary/5 p-4 text-primary transition-colors duration-300 group-hover:border-accent/20 group-hover:bg-accent/10 group-hover:text-accent">
                   <service.icon className="h-8 w-8" />
                 </div>
-                <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
+                <CardTitle className="font-headline text-2xl text-primary">{service.title}</CardTitle>
               </CardHeader>
-              <CardContent className="flex flex-1 flex-col justify-between p-4 pt-0">
+              <CardContent className="flex flex-1 flex-col p-6 pt-0">
                 {service.isList && Array.isArray(service.description) ? (
-                  <div className="text-left space-y-2 text-sm text-muted-foreground">
+                  <ul className="flex-1 space-y-3 text-left text-sm text-muted-foreground">
                     {service.description.map((item, i) => (
-                      <div key={i} className="flex items-start gap-2">
-                        <Check className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="mt-1 h-4 w-4 flex-shrink-0 text-accent" />
                         <span>{item}</span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 ) : (
-                  <CardDescription>{service.description}</CardDescription>
+                  <CardDescription className="flex-1 text-center">{service.description}</CardDescription>
                 )}
-                 <div className="mt-4">
-                    <Button variant="link" asChild className="text-accent">
-                        <Link href="#contact">Fale Conosco</Link>
-                    </Button>
-                </div>
               </CardContent>
             </Card>
           ))}
