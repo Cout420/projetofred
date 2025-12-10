@@ -10,7 +10,7 @@ const howWeWorkBgImage = PlaceHolderImages.find(img => img.id === 'how-we-work-b
 
 export default function HowWeWork() {
   return (
-    <section id="how-we-work" className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-white">
+    <section id="how-we-work" className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-white animate-fade-in-up">
         {howWeWorkBgImage && (
             <Image
                 src={howWeWorkBgImage.imageUrl}

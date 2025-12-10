@@ -7,7 +7,7 @@ const aboutImage = PlaceHolderImages.find(img => img.id === 'about-1');
 
 export default function About() {
   return (
-    <section id="about" className="bg-secondary relative overflow-hidden py-12 md:py-24 lg:py-32">
+    <section id="about" className="bg-secondary relative overflow-hidden py-12 md:py-24 lg:py-32 animate-fade-in-up">
        <div
         aria-hidden="true"
         className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-accent/80"

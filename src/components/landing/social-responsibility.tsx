@@ -23,7 +23,7 @@ const image1 = PlaceHolderImages.find(img => img.id === 'social-1');
 
 export default function SocialResponsibility() {
   return (
-    <section id="social-responsibility" className="bg-secondary relative w-full overflow-hidden py-20 md:py-28 lg:py-36 text-foreground">
+    <section id="social-responsibility" className="bg-secondary relative w-full overflow-hidden py-20 md:py-28 lg:py-36 text-foreground animate-fade-in-up">
        <div
         aria-hidden="true"
         className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/80"

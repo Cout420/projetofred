@@ -2,8 +2,6 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { Users, PawPrint, Syringe, Drumstick } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 
 const stats = [
   {
@@ -91,7 +89,7 @@ export default function Impact() {
   }, []);
 
   return (
-    <section id="impact" ref={sectionRef} className="bg-primary w-full py-20 md:py-28 lg:py-32">
+    <section id="impact" ref={sectionRef} className="bg-primary w-full py-20 md:py-28 lg:py-32 animate-fade-in-up">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">

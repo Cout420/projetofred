@@ -43,7 +43,7 @@ const partnershipTiers = [
 
 export default function Partnership() {
   return (
-    <section id="partnership" className="bg-primary w-full py-20 md:py-28 lg:py-36">
+    <section id="partnership" className="bg-primary w-full py-20 md:py-28 lg:py-36 animate-fade-in-up">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
