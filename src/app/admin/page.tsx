@@ -1,17 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, CSSProperties } from 'react';
 import { useRouter } from 'next/navigation';
 import { useFirestore, useUser } from '@/firebase';
 import { collection, onSnapshot, doc, deleteDoc, orderBy, query, type Timestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from '@/components/ui/dialog';
-import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User, Calendar, Type, Loader2 } from 'lucide-react';
+import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User, Calendar, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { getAuth, signOut } from 'firebase/auth';
-import { Skeleton } from '@/components/ui/skeleton';
 import { Separator } from '@/components/ui/separator';
 import { PawPrintIcon } from '@/components/icons/paw-print';
 
@@ -31,6 +30,18 @@ export default function AdminPage() {
   const router = useRouter();
   const [denuncias, setDenuncias] = useState<Denuncia[]>([]);
   const [loading, setLoading] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
 
   useEffect(() => {
     if (!userLoading && !user) {
@@ -69,6 +80,13 @@ export default function AdminPage() {
     router.push('/admin/login');
   };
 
+  const backgroundStyle: CSSProperties = {
+    '--mouse-x': `${mousePosition.x}px`,
+    '--mouse-y': `${mousePosition.y}px`,
+    background: `radial-gradient(600px at var(--mouse-x) var(--mouse-y), hsla(var(--primary) / 0.15), transparent 80%)`,
+    transition: 'background 0.3s ease-out',
+  };
+
   if (userLoading || loading) {
     return (
         <div className="flex min-h-screen items-center justify-center bg-secondary">
@@ -80,7 +98,7 @@ export default function AdminPage() {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-secondary">
+    <div className="min-h-screen bg-secondary" style={backgroundStyle}>
       <header className="sticky top-0 z-30 border-b bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
             <div className="flex items-center gap-2">
@@ -96,7 +114,7 @@ export default function AdminPage() {
       <main className="p-4 sm:p-6 md:p-8">
         <div className="container mx-auto">
             {denuncias.length === 0 ? (
-                <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-muted-foreground/30 bg-background py-20 text-center">
+                <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-muted-foreground/30 bg-background/50 py-20 text-center backdrop-blur-sm">
                     <Inbox className="h-16 w-16 text-muted-foreground/50" />
                     <h2 className="mt-6 text-2xl font-semibold text-primary">Caixa de Entrada Vazia</h2>
                     <p className="mt-2 text-muted-foreground">Nenhuma denúncia encontrada no momento.</p>
@@ -104,7 +122,7 @@ export default function AdminPage() {
             ) : (
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {denuncias.map((d) => (
-                    <Card key={d.id} className="flex flex-col rounded-2xl bg-background shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1">
+                    <Card key={d.id} className="flex flex-col rounded-2xl bg-background/80 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1 backdrop-blur-sm">
                         <CardHeader className="p-5">
                             <CardTitle className="truncate text-lg font-bold text-primary">{d.subject}</CardTitle>
                             <CardDescription className="flex items-center gap-2 pt-1 text-xs">
@@ -115,7 +133,7 @@ export default function AdminPage() {
                         <CardContent className="flex-grow p-5 pt-0">
                             <p className="text-muted-foreground line-clamp-3 text-sm">{d.message}</p>
                         </CardContent>
-                        <CardFooter className="flex justify-between items-center p-4 bg-secondary rounded-b-2xl">
+                        <CardFooter className="flex justify-between items-center p-4 bg-secondary/70 rounded-b-2xl">
                             <Dialog>
                                 <DialogTrigger asChild>
                                     <Button variant="outline" size="sm">
@@ -123,7 +141,7 @@ export default function AdminPage() {
                                         Ver Detalhes
                                     </Button>
                                 </DialogTrigger>
-                                <DialogContent className="max-w-2xl rounded-2xl">
+                                <DialogContent className="max-w-2xl rounded-2xl bg-background/80 backdrop-blur-sm">
                                     <DialogHeader className="text-left">
                                         <DialogTitle className="text-2xl font-bold text-primary">{d.subject}</DialogTitle>
                                         <DialogDescription className="flex items-center gap-2 text-sm text-muted-foreground pt-1">
@@ -151,7 +169,7 @@ export default function AdminPage() {
                                                     </div>
                                                 </div>
                                                 {d.phone && (
-                                                    <div className="flex items-center gap-3 col-span-full">
+                                                    <div className="flex items-center gap-3">
                                                         <Phone className="h-5 w-5 text-primary/70" />
                                                         <div>
                                                             <p className="font-medium text-foreground">{d.phone}</p>
@@ -180,7 +198,7 @@ export default function AdminPage() {
                                         <span className="sr-only">Excluir</span>
                                     </Button>
                                 </DialogTrigger>
-                                <DialogContent className="sm:max-w-[425px] rounded-2xl">
+                                <DialogContent className="sm:max-w-[425px] rounded-2xl bg-background/80 backdrop-blur-sm">
                                     <DialogHeader>
                                         <DialogTitle>Confirmar Exclusão</DialogTitle>
                                         <DialogDescription>
@@ -207,3 +225,5 @@ export default function AdminPage() {
     </div>
   );
 }
+
+    
