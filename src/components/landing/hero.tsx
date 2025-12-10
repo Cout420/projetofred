@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -6,23 +8,6 @@ import { ArrowDown } from 'lucide-react';
 import { Instagram } from 'lucide-react';
 
 const heroImage = PlaceHolderImages.find(img => img.id === 'hero-1');
-
-const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-        <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
-    </svg>
-  );
 
 export default function Hero() {
   return (
@@ -55,12 +40,12 @@ export default function Hero() {
         </p>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105 shadow-lg">
+            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 transition-transform duration-300 hover:scale-105 shadow-lg text-base">
                 <a href="https://www.instagram.com/chameofrederico/" target="_blank" rel="noopener noreferrer">
                    <Instagram className="mr-2 h-6 w-6" /> Conheça nosso trabalho
                 </a>
             </Button>
-            <Button size="lg" variant="outline" asChild className="border-accent bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105 shadow-lg">
+            <Button size="lg" variant="outline" asChild className="border-accent bg-accent text-accent-foreground hover:bg-accent/90 transition-transform duration-300 hover:scale-105 shadow-lg text-base">
                 <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
