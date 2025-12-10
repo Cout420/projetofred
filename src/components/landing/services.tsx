@@ -42,7 +42,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-background relative overflow-hidden">
+    <section id="services" className="bg-background relative overflow-hidden py-12 md:py-24 lg:py-32">
        <div
         aria-hidden="true"
         className="absolute inset-y-0 right-0 w-1/4 skew-x-12 transform translate-x-1/2 bg-accent/10"

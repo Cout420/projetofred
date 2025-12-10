@@ -35,7 +35,7 @@ export default function Hero() {
             Ninguém pode ser deixado para trás
         </p>
 
-        <p className="mt-2 max-w-2xl text-base text-white/80 drop-shadow-md">
+        <p className="mt-2 max-w-2xl text-sm md:text-base text-white/80 drop-shadow-md">
             Promovemos o bem-estar e a proteção animal com resgates, castração e apoio a famílias. Juntos, construímos uma comunidade mais solidária.
         </p>
 

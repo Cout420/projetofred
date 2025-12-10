@@ -55,11 +55,11 @@ export default function SocialResponsibility() {
 
           {/* Right Column */}
           <div className="flex flex-col items-center justify-center space-y-8 text-center">
-             <h2 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
+             <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter">
                 <span className="whitespace-nowrap text-primary">Responsabilidade Social</span>
                 <span className="block text-accent whitespace-nowrap">com a Causa Animal</span>
              </h2>
-             <div className="w-full max-w-lg">
+             <div className="w-full max-w-md lg:max-w-lg">
                 {image1 && (
                      <Card className="overflow-hidden rounded-3xl shadow-2xl w-full transition-transform duration-300 hover:scale-105">
                         <CardContent className="p-0">

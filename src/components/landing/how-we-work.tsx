@@ -10,7 +10,7 @@ const howWeWorkBgImage = PlaceHolderImages.find(img => img.id === 'how-we-work-b
 
 export default function HowWeWork() {
   return (
-    <section id="how-we-work" className="relative w-full py-24 md:py-32 lg:py-40 flex items-center justify-center text-white">
+    <section id="how-we-work" className="relative w-full py-20 md:py-32 lg:py-40 flex items-center justify-center text-white">
         {howWeWorkBgImage && (
             <Image
                 src={howWeWorkBgImage.imageUrl}
@@ -52,8 +52,8 @@ export default function HowWeWork() {
                             <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Castração</li>
                             <li className="flex items-center gap-3"><Check className="h-5 w-5 text-accent"/>Apoio logístico</li>
                         </ul>
-                        <div className="mt-6 flex justify-start">
-                            <Button variant="link" asChild className="text-accent hover:text-accent/80 p-0 h-auto">
+                        <div className="mt-6 flex justify-center md:justify-start">
+                            <Button variant="link" asChild className="text-accent hover:text-accent/80 p-0 h-auto text-center md:text-left">
                                  <a href="https://wa.me/5511940344310?text=Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20como%20minha%20empresa%20pode%20apoiar%20o%20Projeto%20Frederico" target="_blank" rel="noopener noreferrer">
                                     Fale conosco via WhatsApp
                                 </a>

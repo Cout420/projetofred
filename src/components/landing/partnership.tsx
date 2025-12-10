@@ -56,7 +56,7 @@ export default function Partnership() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-7xl items-stretch gap-8 py-12 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-7xl items-stretch gap-8 py-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {partnershipTiers.map((tier) => (
             <Card key={tier.title} className="flex flex-col rounded-2xl bg-card text-card-foreground shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-accent/20 border-accent/20">
               <CardHeader className="items-center text-center p-6">

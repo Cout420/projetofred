@@ -7,7 +7,7 @@ const aboutImage = PlaceHolderImages.find(img => img.id === 'about-1');
 
 export default function About() {
   return (
-    <section id="about" className="bg-secondary relative overflow-hidden">
+    <section id="about" className="bg-secondary relative overflow-hidden py-12 md:py-24 lg:py-32">
        <div
         aria-hidden="true"
         className="absolute inset-y-0 left-0 w-1/4 -skew-x-12 transform -translate-x-1/2 bg-accent/80"
@@ -18,7 +18,7 @@ export default function About() {
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
               Quem somos?
             </h2>
-            <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="max-w-[600px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto md:mx-0">
               O Projeto Frederico nasceu do compromisso com a causa animal e da certeza de que toda vida merece proteção, cuidado e dignidade. Atuamos no resgate, acolhimento, orientação, castração, e doação de alimentos para animais comunitários, ou pertencentes a famílias de baixa renda.
             </p>
             <div className="flex justify-center md:justify-start">

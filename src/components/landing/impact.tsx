@@ -57,7 +57,7 @@ const Counter = ({ endValue, suffix = '' }: { endValue: number; suffix?: string 
   }, [endValue]);
 
   return (
-    <span className="font-headline text-5xl md:text-6xl font-bold text-accent drop-shadow-md">
+    <span className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold text-accent drop-shadow-md">
       {count}
       {suffix}
     </span>
@@ -103,14 +103,14 @@ export default function Impact() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 sm:grid-cols-2 md:gap-12 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-5xl items-stretch gap-8 py-12 grid-cols-2 md:grid-cols-4 md:gap-12">
           {stats.map((stat, index) => (
             <div key={index} className="flex flex-col items-center text-center space-y-4">
               <div className="rounded-full bg-primary-foreground/10 p-5 text-accent">
-                <stat.icon className="h-10 w-10" />
+                <stat.icon className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
               {isVisible && <Counter endValue={stat.endValue} suffix={stat.suffix} />}
-              <p className="font-semibold text-lg text-primary-foreground/90">{stat.label}</p>
+              <p className="font-semibold text-base sm:text-lg text-primary-foreground/90">{stat.label}</p>
             </div>
           ))}
         </div>

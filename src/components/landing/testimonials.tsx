@@ -77,7 +77,7 @@ export default function Testimonials() {
   const testimonialImages = PlaceHolderImages.filter(img => img.id.startsWith('testimonial-'));
 
   return (
-    <section id="testimonials" className="bg-background">
+    <section id="testimonials" className="bg-background py-12 md:py-24 lg:py-32">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -112,7 +112,7 @@ export default function Testimonials() {
                                 <Star key={i} className={cn("h-5 w-5", i < testimonial.rating ? "fill-yellow-400 text-yellow-400" : "fill-muted stroke-muted-foreground")} />
                               ))}
                             </div>
-                            <blockquote className="text-lg font-medium italic text-foreground/90">
+                            <blockquote className="text-base md:text-lg font-medium italic text-foreground/90">
                               "{testimonial.text}"
                             </blockquote>
                             <p className="mt-4 font-headline text-lg font-semibold text-primary">
