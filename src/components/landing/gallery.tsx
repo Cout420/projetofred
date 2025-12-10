@@ -26,7 +26,7 @@ export default function Gallery() {
           <Dialog>
             {galleryImages.map((image, index) => (
               <DialogTrigger key={image.id} asChild onClick={() => setSelectedImage(image)}>
-                <Card className="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/50 cursor-pointer relative">
+                <Card className="group overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/20 cursor-pointer relative">
                   <CardContent className="p-0">
                     <Image
                       src={image.imageUrl}

@@ -61,8 +61,8 @@ export default function Services() {
             <Card key={index} className="group relative flex flex-col overflow-hidden rounded-2xl bg-card text-card-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-accent/20">
               <div className="absolute top-0 h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <CardHeader className="items-center text-center p-6">
-                <div className="mb-4 rounded-full border-2 border-primary/10 bg-primary/5 p-4 text-primary transition-colors duration-300 group-hover:border-accent/20 group-hover:bg-accent/10 group-hover:text-accent">
-                  <service.icon className="h-8 w-8" />
+                <div className="mb-4 rounded-full border-2 border-primary/10 bg-primary/5 p-4 text-primary transition-all duration-300 group-hover:border-accent/20 group-hover:bg-accent/10 group-hover:text-accent group-hover:scale-110">
+                  <service.icon className="h-8 w-8 transition-transform duration-300 group-hover:rotate-12" />
                 </div>
                 <CardTitle className="font-headline text-2xl text-primary">{service.title}</CardTitle>
               </CardHeader>

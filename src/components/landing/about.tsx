@@ -28,7 +28,7 @@ export default function About() {
             </div>
           </div>
           <div className="flex justify-center">
-            <Card className="overflow-hidden rounded-xl shadow-2xl transition-transform duration-300 hover:scale-105 hover:shadow-accent/20">
+            <Card className="overflow-hidden rounded-xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-accent/20">
               <CardContent className="p-0">
                 {aboutImage && (
                   <Image
