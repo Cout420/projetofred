@@ -81,10 +81,7 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Depoimentos de quem apoia</h2>
-            <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Veja o que os amantes de animais estão dizendo sobre a experiência com o Projeto Frederico.
-            </p>
+            <h2 className="text-3xl font-headline font-bold tracking-tighter text-primary sm:text-5xl">Relatos reais de amor e resgate</h2>
           </div>
         </div>
         <div className="py-12">
