@@ -33,7 +33,7 @@ const partnershipTiers = [
     subtitle: 'Suporte para resgates e transporte',
     description: 'Financeie o profissional que dirige nosso veículo de resgate, garantindo que possamos chegar onde a ajuda é necessária.',
     items: [
-      { level: 'Apoio Essencial', detail: 'Salário médio do motorista: R$ 2.100,00 + encargos' },
+      { level: 'Recursos Financeiros', detail: 'Auxilio no custeio do profissional que realizará os resgates' },
       { level: 'Atuação', detail: 'Segunda a sexta-feira' },
       { level: 'Impacto', detail: 'Viabiliza todos os resgates' },
     ],
