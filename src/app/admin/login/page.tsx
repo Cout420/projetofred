@@ -1,15 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PawPrintIcon } from '@/components/icons/paw-print';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ArrowLeft } from 'lucide-react';
 
 export default function AdminLoginPage() {
   const [username, setUsername] = useState('');
@@ -91,6 +92,14 @@ export default function AdminLoginPage() {
             </Button>
           </form>
         </CardContent>
+         <CardFooter className="flex justify-center pb-6 sm:pb-8">
+          <Button variant="ghost" asChild className="text-muted-foreground hover:text-primary">
+            <Link href="/">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Voltar para o Início
+            </Link>
+          </Button>
+        </CardFooter>
       </Card>
     </div>
   );
