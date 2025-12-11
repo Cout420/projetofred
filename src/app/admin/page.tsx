@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
-import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User, Calendar, Loader2, Search, Frown } from 'lucide-react';
+import { Trash2, LogOut, Inbox, ExternalLink, Phone, Mail, FileText, User, Calendar, Loader2, Search, Frown, ShieldAlert } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { getAuth, signOut } from 'firebase/auth';
@@ -153,7 +153,10 @@ export default function AdminPage() {
                 {filteredDenuncias.map((d) => (
                     <Card key={d.id} className="flex flex-col rounded-2xl bg-background/80 shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:-translate-y-1 backdrop-blur-sm border-t-4 border-transparent hover:border-accent">
                         <CardHeader className="p-5">
-                            <CardTitle className="truncate text-lg font-bold text-primary">{d.subject}</CardTitle>
+                            <div className="flex items-start justify-between gap-4">
+                                <CardTitle className="truncate text-lg font-bold text-primary">{d.subject}</CardTitle>
+                                <ShieldAlert className="h-6 w-6 text-accent flex-shrink-0" />
+                            </div>
                             <CardDescription className="flex items-center gap-2 pt-1 text-xs">
                                <Calendar className="h-4 w-4" />
                                <span>{d.createdAt ? format(d.createdAt.toDate(), "dd/MM/yyyy 'às' HH:mm", { locale: ptBR }) : 'Data indisponível'}</span>
@@ -254,5 +257,3 @@ export default function AdminPage() {
     </div>
   );
 }
-
-    
