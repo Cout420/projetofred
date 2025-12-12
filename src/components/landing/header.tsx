@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { href: '#about', label: 'Sobre' },
   { href: '#gallery', label: 'Galeria' },
   { href: '#testimonials', label: 'Depoimentos' },
-  { href: '#contact', label: 'Contato' },
+  { href: '#contact', label: 'Denuncie' },
 ];
 
 export default function Header() {
