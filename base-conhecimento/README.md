@@ -34,6 +34,8 @@ Na construção inicial (2026-10-12) o ambiente **bloqueava a leitura de página
 | Ofertas e comportamento | temas/ofertas-e-comportamento.md | processos/construcao-de-oferta.md |
 | Métricas e rastreamento | temas/metricas-rastreamento-atribuicao.md | processos/checklist-rastreamento.md, processos/diagnostico-de-campanha.md |
 | Testes e escala | temas/testes-otimizacao-escala.md | processos/plano-de-testes-e-escala.md |
+| Serviços/leads (economia) | — | processos/leads-servicos-unit-economics.md |
+| Critérios de decisão | — | processos/heuristicas-de-decisao.md |
 
 ## Divergências abertas importantes
 - Fase de aprendizado Meta: 50 eventos/7 dias (doc) vs relatos de 10 eventos em 2026 [HIPÓTESE].

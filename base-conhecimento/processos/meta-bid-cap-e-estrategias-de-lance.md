@@ -61,3 +61,7 @@
 5. **Interpretar:** subentrega = meta irrealista [DOC OFICIAL].
 6. **Manter/modificar/interromper:** relaxar meta em passos pequenos se não gastar; interromper se ROAS < equilíbrio.
 7. **Riscos:** dados de valor errados distorcem a otimização.
+
+## Nota: orçamento limitado e eventos (adicionada após teste da Skill)
+- Se orçamento semanal ÷ CPA esperado < ~50, bid cap tende a sub-entregar e prolongar o aprendizado: comece em Highest Volume, obtenha CPA real e só depois teste cap [HEURÍSTICA].
+- Garanta que bump vá no valor da compra principal e que upsell não gere evento de compra duplicado que distorça o CPA usado para definir o cap.

@@ -38,3 +38,7 @@ CPA, ROAS (receita do funil ÷ gasto), TMF, taxas de aceitação de bump/upsell,
 - Taxa fixa por venda corrói margem em ticket muito baixo; confirmar taxas oficiais vigentes.
 - Reembolsos e chargebacks podem inverter o resultado; atribuição do Pixel pode diferir da plataforma.
 - **Compliance Meta:** proibido prometer renda garantida, "dinheiro rápido", prints de saldo/faturamento, antes/depois em saúde/estética, linguagem que afirme atributos pessoais ("você está endividado?"). Vale para anúncio, página e depoimentos. CDC: oferta precisa ser cumprida e direito de arrependimento (7 dias) em compras online.
+
+## Correções após teste da Skill
+- Taxas fixas por transação: bump costuma ir na mesma transação da entrada; upsell/downsell são transações separadas. Custo fixo ≈ taxa_fixa × (1 + t_upsell + (1−t_upsell)·t_downsell).
+- ROAS < 0,8× breakeven: interromper e revisar oferta. Critérios unificados em `heuristicas-de-decisao.md`.

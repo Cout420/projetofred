@@ -29,3 +29,8 @@ Comparar variação relativa de cada termo: a etapa com maior piora % explica a 
 
 ## 7. Riscos e limitações
 Atribuição de plataforma não é causal; ruído em amostras pequenas; mudanças simultâneas confundem causa; benchmarks variam por nicho.
+
+## Checagem de consistência (adicionada após teste da Skill)
+- **ROAS = ticket médio × CTR × CVR × 1000 ÷ CPM.** Calcule com os números reportados; se o ROAS informado divergir muito do calculado, suspeite de rastreamento, atribuição (janelas, view-through) ou mudança de ticket antes de otimizar mídia.
+- Para achar o gargalo, compare o **fator multiplicativo** de cada termo no CPA (ex.: CPM 25→38 = ×1,52; CTR 1,6→0,9% = ×1,78), não a variação percentual isolada.
+- Critérios de corte: ver `heuristicas-de-decisao.md`.

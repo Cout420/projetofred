@@ -21,7 +21,7 @@ Fontes: [amostra](../fontes/testes-tamanho-amostra-significancia.md), [creative 
 7. **Riscos:** peeking; sobreposição de públicos; sazonalidade; doc oficial da ferramenta não verificada.
 
 ## Estratégia C — Escala com controle de risco
-1. **Quando:** CPA/ROAS na meta por ≥7 dias, fora do aprendizado (~50 eventos/7d [CONSENSO]).
+1. **Quando:** CPA/ROAS na meta por ≥7 dias, fora do aprendizado (~50 eventos/7d [DOC OFICIAL]).
 2. **Dados:** CPA marginal, MER, frequência, fator de incrementalidade se houver.
 3. **Como:** vertical +≤20% a cada 3–4 dias [OPINIÃO]; horizontal com novos criativos/públicos; agrupar edições; reserva de criativos aprovados.
 4. **Métricas:** CPA/ROAS marginal, MER, CPM, frequência, aprendizado.
